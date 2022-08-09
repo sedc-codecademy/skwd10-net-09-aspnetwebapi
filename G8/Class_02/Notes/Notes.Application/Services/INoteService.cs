@@ -7,5 +7,7 @@ namespace Notes.Application.Services
         public NoteModel GetNote(int id);
 
         public IEnumerable<NoteModel> GetNotes();
+
+        public NoteModel CreateNote(CreateNoteModel model, int userId);
     }
 }

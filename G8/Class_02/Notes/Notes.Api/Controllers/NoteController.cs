@@ -29,5 +29,35 @@ namespace Notes.Api.Controllers
                 return NotFound();
             }
         }
+
+        // GetNotes
+        [HttpGet]
+        public ActionResult<IEnumerable<NoteModel>> GetNotes()
+        {
+            return Ok(service.GetNotes());
+        }
+
+        [HttpPost]
+        public ActionResult<NoteModel> CreateNote([FromBody] CreateNoteModel model, [FromQuery] int? userId)
+        {
+            if(userId == null)
+            {
+                return Unauthorized(); // 403
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // 400
+            }
+            try
+            {
+                var noteModel = service.CreateNote(model, userId.Value);
+                return Created($"api/v1/note/{noteModel.Id}", noteModel); // 201
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+        }
     }
 }
