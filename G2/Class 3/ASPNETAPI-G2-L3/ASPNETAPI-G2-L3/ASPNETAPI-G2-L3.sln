@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETAPI-G2-L3", "ASPNETAPI-G2-L3\ASPNETAPI-G2-L3.csproj", "{FB45E4B4-B7D0-4883-AE90-79C9B2C87DB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB45E4B4-B7D0-4883-AE90-79C9B2C87DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB45E4B4-B7D0-4883-AE90-79C9B2C87DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB45E4B4-B7D0-4883-AE90-79C9B2C87DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB45E4B4-B7D0-4883-AE90-79C9B2C87DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {992B6F85-E1E0-49C8-B890-4D2B4D428442}
+	EndGlobalSection
+EndGlobal
