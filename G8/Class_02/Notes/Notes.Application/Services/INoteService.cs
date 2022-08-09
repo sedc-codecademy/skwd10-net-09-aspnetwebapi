@@ -5,5 +5,7 @@ namespace Notes.Application.Services
     public interface INoteService
     {
         public NoteModel GetNote(int id);
+
+        public IEnumerable<NoteModel> GetNotes();
     }
 }

@@ -1,4 +1,6 @@
-﻿using Notes.Application.Models;
+﻿using Notes.Application.Exceptions;
+using Notes.Application.Mapper;
+using Notes.Application.Models;
 using Notes.Application.Repositories;
 using Notes.Domain.Models;
 
@@ -17,17 +19,15 @@ namespace Notes.Application.Services.Implementation
             var note = repository.GetById(id);
             if(note == null)
             {
-                throw new Exception("Note was not found");
+                throw new NotFoundException("Note was not found");
             }
 
-            return new NoteModel
-            {
-                Id = note.Id,
-                Color = note.Color,
-                Tag = note.Tag,
-                Text = note.Text,
-                UserName = note.User.Username
-            };
+            return note.ToModel();
+        }
+
+        public IEnumerable<NoteModel> GetNotes()
+        {
+            return repository.GetAll().Select(note => note.ToModel());
         }
     }
 }
