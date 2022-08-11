@@ -42,7 +42,7 @@ namespace Notes.Api.Controllers
         {
             if(userId == null)
             {
-                return Unauthorized(); // 403
+                return Unauthorized(); // 401
             }
 
             if (!ModelState.IsValid)
@@ -56,7 +56,36 @@ namespace Notes.Api.Controllers
             }
             catch (NotFoundException)
             {
+                return NotFound(); //404
+            }
+        }
+        //note/{123123123}
+        [HttpPut("{id:int}")] 
+        public ActionResult<EditNoteModel> EditNote([FromBody] EditNoteModel model, int id, int? userId)
+        {
+            if (!userId.HasValue)
+            {
+                return Unauthorized();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(model);
+            }
+            try
+            {
+                var note = service.EditNote(model, id, userId.Value);
+                return Ok(note);
+                //return StatusCode(StatusCodes.Status200OK, note);
+            }
+            catch (NotFoundException)
+            {
                 return NotFound();
+            }
+            catch (ExecutionNotAllowedException)
+            {
+                //return StatusCode(StatusCodes.Status403Forbidden, new object);
+                return Forbid();
             }
         }
     }

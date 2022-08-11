@@ -9,5 +9,7 @@ namespace Notes.Application.Services
         public IEnumerable<NoteModel> GetNotes();
 
         public NoteModel CreateNote(CreateNoteModel model, int userId);
+
+        public NoteModel EditNote(EditNoteModel model, int id, int userId);
     }
 }
