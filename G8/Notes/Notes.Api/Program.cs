@@ -1,11 +1,17 @@
+using Notes.Application.Repositories;
+using Notes.Application.Services;
+using Notes.Application.Services.Implementation;
+using Notes.Domain.Models;
+using Notes.Infrastracture.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IServiceA, ServiceA>(); // new Class ServiceA ednas samo postoi
-builder.Services.AddScoped<IServiceB, ServiceB>(); // eden request
-builder.Services.AddTransient<IServiceC, ServiceC>(); // new ServiceC
+builder.Services.AddScoped<INoteService, NoteService>();
+builder.Services.AddScoped<IRepository<Note>, NoteRepository>();
+builder.Services.AddScoped<IRepository<User>, UserRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -26,55 +32,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-public interface IServiceA
-{
-
-}
-
-public class ServiceA : IServiceA
-{
-    private readonly IServiceB serviceB;
-
-    public ServiceA(IServiceB serviceB)
-    {
-        this.serviceB = serviceB;
-    }
-}
-
-interface IServiceB
-{
-
-}
-
-//scoped
-class ServiceB : IServiceB
-{
-    private readonly IServiceA serviceA;
-    private readonly IServiceC serviceC;
-
-    //public ServiceB(IServiceA serviceA, IServiceC serviceC)
-    //{
-    //    this.serviceA = serviceA;
-    //    this.serviceC = serviceC;
-    //}
-}
-
-interface IServiceC
-{
-
-}
-
-//transient
-class ServiceC : IServiceC
-{
-    private readonly IServiceA serviceA;
-
-    public ServiceC(IServiceA serviceA, IServiceB serviceB)
-    {
-        this.serviceA = serviceA;
-        ServiceB = serviceB;
-    }
-
-    public IServiceB ServiceB { get; }
-}
