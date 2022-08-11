@@ -88,5 +88,7 @@ namespace Notes.Api.Controllers
                 return Forbid();
             }
         }
+
+        // DeleteNote -> params id & userId?
     }
 }
