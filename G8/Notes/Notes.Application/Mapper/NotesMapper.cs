@@ -16,5 +16,6 @@ namespace Notes.Application.Mapper
                 UserName = note.User.Username
             };
         } 
+
     }
 }

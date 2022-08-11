@@ -11,5 +11,7 @@ namespace Notes.Application.Services
         public NoteModel CreateNote(CreateNoteModel model, int userId);
 
         public NoteModel EditNote(EditNoteModel model, int id, int userId);
+
+        void Delete(int id, int userId);
     }
 }

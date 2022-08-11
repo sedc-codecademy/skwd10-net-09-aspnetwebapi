@@ -33,6 +33,20 @@ namespace Notes.Application.Services.Implementation
             return note.ToModel();
         }
 
+        public void Delete(int id, int userId)
+        {
+            var note = repository.GetById(id);
+            if(note == null)
+            {
+                throw new NotFoundException("Note was not found");
+            }
+
+            if(note.User.Id != userId)
+            {
+                throw new ExecutionNotAllowedException();
+            }
+        }
+
         public NoteModel EditNote(EditNoteModel model, int id, int userId)
         {
             var note = repository.GetById(id);

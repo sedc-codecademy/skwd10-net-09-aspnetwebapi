@@ -90,5 +90,28 @@ namespace Notes.Api.Controllers
         }
 
         // DeleteNote -> params id & userId?
+
+        [HttpDelete("{id:int}")]
+        public ActionResult DeleteNote(int id, int? userId)
+        {
+            if (!userId.HasValue)
+            {
+                return Unauthorized();
+            }
+            try
+            {
+                service.Delete(id, userId.Value);
+                return Ok();
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (ExecutionNotAllowedException)
+            {
+                return Forbid();
+            }
+
+        }
     }
 }

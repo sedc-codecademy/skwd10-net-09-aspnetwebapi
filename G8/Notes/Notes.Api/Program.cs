@@ -1,7 +1,9 @@
+using HashidsNet;
 using Notes.Application.Repositories;
 using Notes.Application.Services;
 using Notes.Application.Services.Implementation;
 using Notes.Domain.Models;
+using Notes.Infrastracture;
 using Notes.Infrastracture.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<INoteService, NoteService>();
 builder.Services.AddScoped<IRepository<Note>, NoteRepository>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
+builder.Services.AddScoped<IHashids>(sp => new Hashids("This is super secret"));
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
