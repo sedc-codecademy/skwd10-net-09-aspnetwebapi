@@ -3,14 +3,18 @@ PHONEBOOK LAB EXERCISE
 Task One:
 
 Create Web api application that supports endpoint for ADDING,RREMOVING, READING and UPDATING records in a phonebook.
-We wont use any fancy architecture, neather real database. We are going to use StaticDB
+We wont use any fancy architecture, neather real database. We are going to use StaticDB.
 
 Suggested methods:
 
 CreateRecord
+
 GetAllRecords
+
 GetRecordById
+
 DeleteRecord
+
 UpdateRecord
 
 The domain model should have the following properties:
