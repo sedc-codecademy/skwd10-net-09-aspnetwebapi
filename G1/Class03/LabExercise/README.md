@@ -1,8 +1,8 @@
-PHONEBOOK LAB EXERCISE
+PHONE BOOK LAB EXERCISE
 
 Task One:
 
-Create Web api application that supports endpoint for ADDING,RREMOVING, READING and UPDATING contacts in a phonebook.
+Create Web API application that supports endpoint for ADDING, REMOVING, READING and UPDATING contacts in a phone book.
 We wont use any fancy architecture, neather real database. We are going to use StaticDB.
 
 Suggested methods:
