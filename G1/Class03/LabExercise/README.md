@@ -31,7 +31,7 @@ Bonus:
 
 Make one aditional endpoint that will generate a secret key, (can be hardcoded string, some facy randomizer or guid generator) and store that key in to the database.
 Secure all endpoints with taht key, so a client cant access the api if the correct key is not provided as QUERY parameter.
-TIP: You will also need an enpoint for getting the key. :)
+TIP: You will also need an endpoint for getting the key. :)
 
 
 
