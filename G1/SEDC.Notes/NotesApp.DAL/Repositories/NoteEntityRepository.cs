@@ -7,35 +7,31 @@ using System.Threading.Tasks;
 
 namespace NotesApp.DAL.Repositories
 {
-    public class NoteStaticDbRepoistory : IRepository<NoteDto>
+    public class NoteEntityRepository : IRepository<NoteDto>
     {
         public void Add(NoteDto entity)
         {
-            StaticDB.Notes.Add(entity);
+            throw new NotImplementedException();
         }
 
         public void Delete(NoteDto entity)
         {
-            StaticDB.Notes.Remove(entity);
+            throw new NotImplementedException();
         }
 
         public List<NoteDto> GetAll()
         {
-            return StaticDB.Notes;
+            throw new NotImplementedException();
         }
 
         public NoteDto GetById(int id)
         {
-            var result = StaticDB.Notes.FirstOrDefault(note => note.Id == id);
-            return result;
+            throw new NotImplementedException();
         }
 
         public void Update(NoteDto entity)
         {
-            var result = StaticDB.Notes.FirstOrDefault(note => note.Id == entity.Id);
-            result.Text = entity.Text;
-            result.Color = entity.Color;
-            result.Tag = entity.Tag;
+            throw new NotImplementedException();
         }
     }
 }

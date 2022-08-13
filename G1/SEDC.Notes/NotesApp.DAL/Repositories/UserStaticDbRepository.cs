@@ -11,27 +11,32 @@ namespace NotesApp.DAL.Repositories
     {
         public void Add(UserDto entity)
         {
-            throw new NotImplementedException();
+            StaticDB.Users.Add(entity);
         }
 
         public void Delete(UserDto entity)
         {
-            throw new NotImplementedException();
+            StaticDB.Users.Remove(entity);
         }
 
         public List<UserDto> GetAll()
         {
-            throw new NotImplementedException();
+            return StaticDB.Users;
         }
 
         public UserDto GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = StaticDB.Users.FirstOrDefault(user => user.Id == id);
+            return result;
         }
 
         public void Update(UserDto entity)
         {
-            throw new NotImplementedException();
+            var result = StaticDB.Users.FirstOrDefault(user => user.Id == entity.Id);
+            result.Username = entity.Username;
+            result.Password = entity.Password;
+            result.FirstName = entity.FirstName;
+            result.LastName = entity.LastName;
         }
     }
 }
