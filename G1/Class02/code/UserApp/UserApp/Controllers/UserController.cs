@@ -87,7 +87,7 @@ namespace UserApp.Controllers
             return Ok("User has been sucessfully added to the database!");
         }
 
-
+        //https://localhost:7023/api/user/update
         [HttpPut("Update")]
         public IActionResult UpdateUser([FromBody] User updatedUser) 
         {
@@ -101,6 +101,13 @@ namespace UserApp.Controllers
             };
 
             return NotFound("User not found");        
+        }
+
+        //https://localhost:7023/api/user/token
+        [HttpGet("Token")]
+        public IActionResult SendToken([FromHeader] string token) 
+        {
+            return Ok(token);
         }
 
     }
