@@ -9,7 +9,7 @@ Suggested methods:
 
 - CreateContact
 - GetAllContacts
-- GetContactdById
+- GetContactById
 - DeleteContact
 - UpdateContact
 
