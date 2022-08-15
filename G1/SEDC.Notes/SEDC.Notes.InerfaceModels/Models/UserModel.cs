@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NotesApp.DataModels
+namespace SEDC.Notes.InerfaceModels.Models
 {
-    public class UserDto
+    public class UserModel
     {
         public int Id { get; set; }
         public string Username { get; set; }
