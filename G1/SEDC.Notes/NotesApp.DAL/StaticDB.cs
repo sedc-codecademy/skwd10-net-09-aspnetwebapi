@@ -9,7 +9,20 @@ namespace NotesApp.DAL
 {
     public static class StaticDB
     {
-        public static List<UserDto> Users = new List<UserDto>();
+        public static int UserIdCounter = 0;
+        public static List<UserDto> Users = new List<UserDto>()
+        {
+            new UserDto
+            {
+                Id = 0,
+                FirstName = "Viktor",
+                LastName = "Jakovlev",
+                Username = "vjakovlev",
+                Password = "P@ssw0rd"
+            }
+        };
+
+        public static int NoteIdCounter = 0;
         public static List<NoteDto> Notes = new List<NoteDto>();
     }
 }
