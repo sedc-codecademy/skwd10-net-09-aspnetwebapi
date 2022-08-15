@@ -11,6 +11,7 @@ namespace NotesApp.DAL.Repositories
     {
         public void Add(UserDto entity)
         {
+            entity.Id = StaticDB.Users.Count + 1;
             StaticDB.Users.Add(entity);
         }
 
