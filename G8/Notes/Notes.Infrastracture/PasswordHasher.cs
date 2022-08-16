@@ -20,14 +20,15 @@ namespace Notes.Infrastracture
 
         //public string HashPassword2(string password)
         //{
-        //    byte[] salt; // random
-        //    new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-        //    var provider = new Rfc2898DeriveBytes(password, salt, 100);
-        //    var hash = provider.GetBytes(20);
-        //    var result = new byte[36];
-        //    Array.Copy(salt, 0, result,0, 16);
+        //byte[] salt; // random
+        //new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+        //var provider = new Rfc2898DeriveBytes(password, salt, 100);
+        //var hash = provider.GetBytes(20);
+        //var result = new byte[36];
+        //Array.Copy(salt, 0, result,0, 16);
         //    Array.Copy(salt, 0, result, 16, 20);
-        //    // https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
+        //    return ASCIIEncoding.ASCII.GetString(shaProvider.ComputeHash(result))
+            // https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
         //}
     }
 }

@@ -55,13 +55,16 @@ namespace Notes.Application.Services.Implementation
             }
 
             var user = repository.GetById(id) ?? throw new NotFoundException("User doesn't exist");
+
             if(user.Password != passwordHasher.HashPassword(model.OldPassword))
             {
                 throw new ValidationException("Old password is wrong");
             }
+
             user.Password = passwordHasher.HashPassword(model.Password);
             repository.Update(user);
         }
+
         //url https://localhost:[port]
         public void ForgotPassword(ForgotPasswordModel model, string url)
         {
@@ -88,6 +91,23 @@ namespace Notes.Application.Services.Implementation
                 throw new NotFoundException("User doesn't exist");
             }
             return user.ToModel();
+        }
+
+        public void UpdatePasswordByCode(UpdatePasswordModel model, string code)
+        {
+            var id = hashids.DecodeSingle(code);
+            if(model.Id != id)
+            {
+                throw new ValidationException();
+            }
+            var user = repository.GetById(id);
+            if (user == null)
+            {
+                throw new NotFoundException("User doesn't exist");
+            }
+            user.ClearForgotPasswordCode();
+            user.Password = passwordHasher.HashPassword(model.Password);
+            repository.Update(user);
         }
     }
 }

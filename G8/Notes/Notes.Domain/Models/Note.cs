@@ -17,5 +17,7 @@
         public string? Tag { get; set; }
 
         public User User { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

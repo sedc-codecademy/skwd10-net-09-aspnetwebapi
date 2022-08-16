@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Notes.Domain.Models
 {
+    // Id
+    // [Entity]Id => UserId
     public class User
     {
         public User(string username, string password, string firstName, string lastName, string email)
@@ -16,7 +15,6 @@ namespace Notes.Domain.Models
             LastName = lastName;
             Email = email;
         }
-
         public int Id { get; set; }
 
         public string Username { get; set; } = string.Empty;

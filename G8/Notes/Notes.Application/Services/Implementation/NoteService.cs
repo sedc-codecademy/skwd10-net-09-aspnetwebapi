@@ -1,4 +1,5 @@
-﻿using Notes.Application.Exceptions;
+﻿using AutoMapper;
+using Notes.Application.Exceptions;
 using Notes.Application.Mapper;
 using Notes.Application.Models;
 using Notes.Application.Repositories;

@@ -13,5 +13,8 @@ namespace Notes.Application.Services
         public void ChangePassword(ChangePasswordModel model, int id);
 
         public void ForgotPassword(ForgotPasswordModel model, string url);
+        UserModel GetUserByCode(string code);
+
+        void UpdatePasswordByCode(UpdatePasswordModel model, string code);
     }
 }
