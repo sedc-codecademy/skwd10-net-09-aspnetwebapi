@@ -1,3 +1,5 @@
+//Microsoft.EntityFrameworkCore.Design
+
 using Utilities;
 
 var builder = WebApplication.CreateBuilder(args);

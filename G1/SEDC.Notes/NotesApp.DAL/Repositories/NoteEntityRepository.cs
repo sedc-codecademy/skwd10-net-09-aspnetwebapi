@@ -9,29 +9,39 @@ namespace NotesApp.DAL.Repositories
 {
     public class NoteEntityRepository : IRepository<NoteDto>
     {
+        private readonly NotesAppDbContext _context;
+        public NoteEntityRepository(NotesAppDbContext context)
+        {
+            _context = context;
+        }
+
         public void Add(NoteDto entity)
         {
-            throw new NotImplementedException();
+            _context.Notes.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(NoteDto entity)
         {
-            throw new NotImplementedException();
+            _context.Notes.Remove(entity);
+            _context.SaveChanges();
         }
 
         public List<NoteDto> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Notes.ToList();
         }
 
         public NoteDto GetById(int id)
         {
-            throw new NotImplementedException();
+            var note = _context.Notes.SingleOrDefault(u => u.Id == id);
+            return note;
         }
 
         public void Update(NoteDto entity)
         {
-            throw new NotImplementedException();
+            _context.Notes.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

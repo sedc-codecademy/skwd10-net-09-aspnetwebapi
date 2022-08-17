@@ -23,7 +23,7 @@ namespace NotesApp.API.Controllers
             return Ok();
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public IActionResult Register([FromBody] RegisterModel model) 
         {
             _userService.Register(model);
