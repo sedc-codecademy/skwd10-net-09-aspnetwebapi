@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.Services.Implementations;
+using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
 
 namespace NotesApp.API.Controllers
@@ -9,11 +10,11 @@ namespace NotesApp.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
 
-        public UserController()
+        public UserController(IUserService userService)
         {
-            _userService = new UserService();
+            _userService = userService;
         }
 
         [HttpPost("Authenticate")]

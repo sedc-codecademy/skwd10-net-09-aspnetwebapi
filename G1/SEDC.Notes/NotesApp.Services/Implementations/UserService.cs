@@ -1,5 +1,7 @@
-﻿using NotesApp.DAL.Repositories;
+﻿using NotesApp.DAL;
+using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
+using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
 using System;
 using System.Collections.Generic;
@@ -9,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Services.Implementations
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly UserStaticDbRepository _userRepository;
+        private readonly IRepository<UserDto> _userRepository;
 
-        public UserService()
+        public UserService(IRepository<UserDto> userRepository)
         {
-            _userRepository = new UserStaticDbRepository();
+            _userRepository = userRepository;
         }
 
         public void Register(RegisterModel model) 

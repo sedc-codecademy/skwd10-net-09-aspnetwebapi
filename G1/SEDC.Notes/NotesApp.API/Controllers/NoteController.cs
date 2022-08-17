@@ -16,7 +16,6 @@ namespace NotesApp.API.Controllers
             _noteService = new NoteService();
         }
 
-
         [HttpGet("GetAll")]
         public IActionResult GetAllNotes() 
         {
