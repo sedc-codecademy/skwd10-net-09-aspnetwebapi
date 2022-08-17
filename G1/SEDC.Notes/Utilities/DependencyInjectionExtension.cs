@@ -18,9 +18,13 @@ namespace Utilities
         {
             //service registration
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<INoteService, NoteService>();
 
             //repository registration
+            //services.AddTransient<IRepository<UserDto>, UserStaticDbRepository>();
+            //services.AddTransient<IRepository<NoteDto>, NoteStaticDbRepoistory>();
             services.AddTransient<IRepository<UserDto>, UserEntityRepository>();
+            services.AddTransient<IRepository<NoteDto>, NoteEntityRepository>();
 
             return services;
         }

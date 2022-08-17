@@ -1,5 +1,7 @@
-﻿using NotesApp.DAL.Repositories;
+﻿using NotesApp.DAL;
+using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
+using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Enums;
 using SEDC.Notes.InerfaceModels.Models;
 using System;
@@ -10,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Services.Implementations
 {
-    public class NoteService
+    public class NoteService : INoteService
     {
-        private readonly NoteStaticDbRepoistory _noteRepository;
+        private readonly IRepository<NoteDto> _noteRepository;
 
-        public NoteService()
+        public NoteService(IRepository<NoteDto> noteRepository)
         {
-            _noteRepository = new NoteStaticDbRepoistory();
+            _noteRepository = noteRepository;
         }
 
         public List<NoteModel> GetAll() 

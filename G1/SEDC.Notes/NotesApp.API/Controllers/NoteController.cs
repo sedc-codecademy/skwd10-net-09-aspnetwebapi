@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.Services.Implementations;
+using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
 
 namespace NotesApp.API.Controllers
@@ -9,11 +10,11 @@ namespace NotesApp.API.Controllers
     [ApiController]
     public class NoteController : ControllerBase
     {
-        private readonly NoteService _noteService;
+        private readonly INoteService _noteService;
 
-        public NoteController()
+        public NoteController(INoteService noteService)
         {
-            _noteService = new NoteService();
+            _noteService = noteService;
         }
 
         [HttpGet("GetAll")]
