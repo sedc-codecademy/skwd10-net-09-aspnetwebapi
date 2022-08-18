@@ -6,8 +6,8 @@ namespace ASPNETAPI_G2_L6.Models
 {
     public class Note : BaseEntity
     {
-        [Required]
-        [MaxLength(255)]
+        //[Required]
+        //[MaxLength(255)]
         public string Text { get; set; }
 
         public string Color { get; set; }
@@ -15,6 +15,8 @@ namespace ASPNETAPI_G2_L6.Models
         public TagType Tag { get; set; }
 
         public int UserId { get; set; }
+
+        public virtual User User { get; set; }
 
         public Note()
         {

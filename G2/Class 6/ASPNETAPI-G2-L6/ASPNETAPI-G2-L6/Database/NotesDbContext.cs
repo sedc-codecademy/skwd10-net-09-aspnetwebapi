@@ -1,4 +1,5 @@
-﻿using ASPNETAPI_G2_L6.Database.Seeds;
+﻿using ASPNETAPI_G2_L6.Database.Configurations;
+using ASPNETAPI_G2_L6.Database.Seeds;
 using ASPNETAPI_G2_L6.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +18,9 @@ namespace ASPNETAPI_G2_L6.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasData(UsersSeed.USERS);
-            modelBuilder.Entity<Note>().HasData(NotesSeed.NOTES);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(NotesDbContext).Assembly);
+            modelBuilder.Entity<Note>()
+                        .HasData(NotesSeed.NOTES);
         }
     }
 }
