@@ -23,14 +23,14 @@ namespace Notes.Api.Controllers
             return Created("api/v1/user/login", user);
         }
 
-        [HttpPost("{id}/change-password")]
+        [HttpPost("{id}/change-password")]// api/v1/user/1/change-password
         public ActionResult ChangePassword(ChangePasswordModel model, int id)
         {
             userService.ChangePassword(model, id);
             return Ok();
         }
 
-        [HttpPost("forgot-password")]
+        [HttpPost("forgot-password")] // api/v1/user/forgot-password
         public ActionResult ForgotPassword(ForgotPasswordModel model)
         {
             var url = $"https://{Request.Host.Value}";

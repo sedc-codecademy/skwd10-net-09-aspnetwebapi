@@ -6,6 +6,10 @@ using Notes.Application.Services;
 
 namespace Notes.Api.Controllers
 {
+    // post- za kreiranje
+    // put - za menuvanje na celiot model
+    // patch - koga sakame da smenime direktva nekoe prop - retko se koristi
+    // post za povikuvanje metodi 
     [Route("api/v1/[controller]")]
     [ApiController]
     public class NoteController : ControllerBase
@@ -36,8 +40,9 @@ namespace Notes.Api.Controllers
         {
             return Ok(service.GetNotes());
         }
-
-        [HttpPost]
+        // var url = 'https://localhost:7323/api/v1/note/by-super-admin/create?userId=[0-9]+' 
+        // ?userId=1&noteId=1&tag=asdads&color=asdasd
+        [HttpPost("by-super-admin")]// ?userId=[0-9]+
         public ActionResult<NoteModel> CreateNote([FromBody] CreateNoteModel model, [FromQuery] int? userId)
         {
             if(userId == null)
@@ -80,7 +85,7 @@ namespace Notes.Api.Controllers
             }
             catch (NotFoundException)
             {
-                return NotFound();
+                return NotFound(); // 404
             }
             catch (ExecutionNotAllowedException)
             {

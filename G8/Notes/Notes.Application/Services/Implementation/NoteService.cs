@@ -28,7 +28,7 @@ namespace Notes.Application.Services.Implementation
 
             var note = new Note(model.Text, model.Color, user)
             {
-                Tag = model.Tag,
+                //Tag = model.Tag, TODO
             };
             repository.Create(note);
             return note.ToModel();
@@ -63,7 +63,7 @@ namespace Notes.Application.Services.Implementation
 
             note.Text = model.Text;
             note.Color = model.Color;
-            note.Tag = model.Tag;
+            //note.Tag = model.Tag; TODO:
             repository.Update(note);
             return note.ToModel();
         }

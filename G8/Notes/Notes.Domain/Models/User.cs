@@ -6,7 +6,12 @@ namespace Notes.Domain.Models
     // Id
     // [Entity]Id => UserId
     public class User
+        : IEntity
     {
+        public User()
+        {
+
+        }
         public User(string username, string password, string firstName, string lastName, string email)
         {
             Username = username;
@@ -24,7 +29,7 @@ namespace Notes.Domain.Models
         public string FirstName { get; set; } = string.Empty;
 
         public string LastName { get; set; } = string.Empty;
-
+        
         public string? ForgotPasswordCode { get; private set; }
 
         public DateTime? ForgotPasswordCodeCreated { get; private set; }

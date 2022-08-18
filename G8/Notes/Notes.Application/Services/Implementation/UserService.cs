@@ -35,7 +35,13 @@ namespace Notes.Application.Services.Implementation
 
         public IEnumerable<UserModel> GetUsers()
         {
-            return repository.GetAll().Select(x => x.ToModel()).ToList(); 
+            // LINQ 
+            IEnumerable<UserModel> result = repository.GetAll()
+                .Where(x => x.ForgotPasswordCode != null)
+                .OrderBy(x => x.Username)
+                .Select(x => x.ToModel());
+
+            return result.ToList();
         }
 
         public UserModel CreateUser(CreateUserModel model)

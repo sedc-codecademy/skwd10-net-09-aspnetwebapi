@@ -14,7 +14,7 @@ namespace Notes.Infrastracture.EntityFramework.EntityTypeConfiguration
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasQueryFilter(x => !x.IsDeleted);
+            //builder.HasQueryFilter(x => !x.IsDeleted); // where isDeleted = 0
         }
     }
 }
