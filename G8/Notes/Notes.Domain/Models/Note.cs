@@ -3,7 +3,7 @@
     public class Note
         : IEntity
     {
-        private Note()
+        public Note()
         {
 
         }

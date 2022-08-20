@@ -9,6 +9,7 @@
 
         public string Value { get; set; } = string.Empty;
 
+
         public Note Note { get; set; }
     }
 }
