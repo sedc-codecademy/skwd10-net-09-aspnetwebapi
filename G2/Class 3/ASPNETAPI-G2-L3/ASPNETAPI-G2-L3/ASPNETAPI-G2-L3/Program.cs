@@ -16,6 +16,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(action => action.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowAnyOrigin());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
