@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SEDC.WebApi.Class06.CodeFirst.Domain;
 
@@ -11,9 +12,10 @@ using SEDC.WebApi.Class06.CodeFirst.Domain;
 namespace SEDC.WebApi.Class06.CodeFirst.Migrations
 {
     [DbContext(typeof(PizzaDbContext))]
-    partial class PizzaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220822182720_ALTER_TABLES_PIZZA_PIZZA_TYPE")]
+    partial class ALTER_TABLES_PIZZA_PIZZA_TYPE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,32 +203,17 @@ namespace SEDC.WebApi.Class06.CodeFirst.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("000000");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("User", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Temnica",
-                            City = "Skopje",
-                            Email = "a@b.com",
-                            Name = "Trajan"
-                        });
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("SEDC.WebApi.Class06.CodeFirst.Domain.Order", b =>

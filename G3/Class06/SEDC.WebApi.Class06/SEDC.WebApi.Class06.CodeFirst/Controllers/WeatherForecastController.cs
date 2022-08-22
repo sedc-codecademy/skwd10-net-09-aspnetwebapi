@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SEDC.WebApi.Class06.CodeFirst.Domain;
 
 namespace SEDC.WebApi.Class06.CodeFirst.Controllers
 {
@@ -28,6 +29,16 @@ namespace SEDC.WebApi.Class06.CodeFirst.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("users")]
+        public ActionResult<User> GetUser()
+        {
+            var context = new PizzaDbContext();
+
+            var user = context.Users.FirstOrDefault();
+
+            return Ok(user);
         }
     }
 }

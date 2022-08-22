@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SEDC.WebApi.Class06.CodeFirst.Domain;
 
@@ -11,9 +12,10 @@ using SEDC.WebApi.Class06.CodeFirst.Domain;
 namespace SEDC.WebApi.Class06.CodeFirst.Migrations
 {
     [DbContext(typeof(PizzaDbContext))]
-    partial class PizzaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220822183921_ALTER_USER_TABLE")]
+    partial class ALTER_USER_TABLE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -217,16 +219,6 @@ namespace SEDC.WebApi.Class06.CodeFirst.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Temnica",
-                            City = "Skopje",
-                            Email = "a@b.com",
-                            Name = "Trajan"
-                        });
                 });
 
             modelBuilder.Entity("SEDC.WebApi.Class06.CodeFirst.Domain.Order", b =>
