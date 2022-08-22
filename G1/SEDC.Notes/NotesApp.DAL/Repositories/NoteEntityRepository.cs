@@ -27,9 +27,9 @@ namespace NotesApp.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public List<NoteDto> GetAll()
+        public IEnumerable<NoteDto> GetAll()
         {
-            return _context.Notes.ToList();
+            return _context.Notes;
         }
 
         public NoteDto GetById(int id)
@@ -43,5 +43,6 @@ namespace NotesApp.DAL.Repositories
             _context.Notes.Update(entity);
             _context.SaveChanges();
         }
+
     }
 }

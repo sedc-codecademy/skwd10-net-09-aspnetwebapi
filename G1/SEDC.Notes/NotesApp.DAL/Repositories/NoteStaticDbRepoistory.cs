@@ -20,7 +20,7 @@ namespace NotesApp.DAL.Repositories
             StaticDB.Notes.Remove(entity);
         }
 
-        public List<NoteDto> GetAll()
+        public IEnumerable<NoteDto> GetAll()
         {
             return StaticDB.Notes;
         }

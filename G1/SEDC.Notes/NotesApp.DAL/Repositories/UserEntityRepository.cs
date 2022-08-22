@@ -28,11 +28,10 @@ namespace NotesApp.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public List<UserDto> GetAll()
+        public IEnumerable<UserDto> GetAll()
         {
             return _context.Users
-                           .Include(x => x.NoteList)
-                           .ToList();
+                           .Include(x => x.NoteList);
         }
 
         public UserDto GetById(int id)

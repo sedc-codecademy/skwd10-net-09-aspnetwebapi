@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Util
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Configurations", "NotesApp.Configurations\NotesApp.Configurations.csproj", "{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Mapper", "NotesApp.Mapper\NotesApp.Mapper.csproj", "{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

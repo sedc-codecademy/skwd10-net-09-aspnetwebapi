@@ -20,7 +20,7 @@ namespace NotesApp.DAL.Repositories
             StaticDB.Users.Remove(entity);
         }
 
-        public List<UserDto> GetAll()
+        public IEnumerable<UserDto> GetAll()
         {
             return StaticDB.Users;
         }
