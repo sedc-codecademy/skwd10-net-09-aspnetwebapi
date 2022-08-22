@@ -17,11 +17,11 @@ namespace Utilities
     //Microsoft.EntityFrameworkCore.SqlServer
     public static class DependencyInjectionExtension
     {
-        public static IServiceCollection RegisterModule(this IServiceCollection services) 
+        public static IServiceCollection RegisterModule(this IServiceCollection services, string connectionString) 
         {
             services.AddDbContext<NotesAppDbContext>(options => 
             {
-                options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=NotesDb;Trusted_Connection=True");
+                options.UseSqlServer(connectionString);
             });
 
             //service registration

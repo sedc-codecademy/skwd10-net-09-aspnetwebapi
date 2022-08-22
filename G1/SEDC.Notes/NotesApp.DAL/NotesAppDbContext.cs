@@ -30,8 +30,6 @@ namespace NotesApp.DAL
                 .WithMany(u => u.NoteList)
                 .HasForeignKey(n => n.UserId);
 
-
-
             //seeding
             modelBuilder.Entity<UserDto>()
                 .HasData(

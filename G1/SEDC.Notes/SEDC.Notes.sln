@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.Notes.InerfaceModels",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Services", "NotesApp.Services\NotesApp.Services.csproj", "{DA1DA086-25C3-4250-8FA3-CF4E436E781B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{570C6D6B-637E-44B0-BBE4-91BA9ECBF970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{570C6D6B-637E-44B0-BBE4-91BA9ECBF970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Configurations", "NotesApp.Configurations\NotesApp.Configurations.csproj", "{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{570C6D6B-637E-44B0-BBE4-91BA9ECBF970}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{570C6D6B-637E-44B0-BBE4-91BA9ECBF970}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{570C6D6B-637E-44B0-BBE4-91BA9ECBF970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
