@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SEDC.WebApi.Class06.DbFirst.Domain
+namespace SEDC.WebApi.Class06.CodeFirst.Domain
 {
-    public partial class OrderDetail
+    public class OrderDetail
     {
         public int Id { get; set; }
+        [ForeignKey("Order")]
         public int OrderId { get; set; }
+        [ForeignKey("Pizza")]
         public int PizzaId { get; set; }
+        [Required]
         public decimal UnitPrice { get; set; }
+        [Required]
         public short Quantity { get; set; }
         public decimal Discount { get; set; }
 
