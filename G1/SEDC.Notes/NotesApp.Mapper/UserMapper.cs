@@ -29,7 +29,8 @@ namespace NotesApp.Mapper
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Username = model.Username,
-                Password = model.Password
+                Password = model.Password,
+                Notes = model.NoteList.Select(note => NoteMapper.ToNoteModel(note)).ToList()
             };
         }
     }

@@ -36,8 +36,7 @@ namespace NotesApp.DAL.Repositories
 
         public UserDto GetById(int id)
         {
-            var user = _context.Users.SingleOrDefault(u => u.Id == id);
-            return user;
+            return _context.Users.SingleOrDefault(u => u.Id == id);
         }
 
         public void Update(UserDto entity)

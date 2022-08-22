@@ -33,8 +33,7 @@ namespace NotesApp.API.Controllers
         [HttpGet("GetAllUsers")]
         public IActionResult GetAllRegisteredUsers() 
         {
-            var response = _userService.GetAllUsers();
-            return Ok(response);
+            return Ok(_userService.GetAllUsers());
         }
     }
 }
