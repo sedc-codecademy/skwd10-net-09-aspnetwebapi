@@ -1,6 +1,7 @@
 ﻿using NotesApp.DAL;
 using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
+using NotesApp.Mapper;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Enums;
 using SEDC.Notes.InerfaceModels.Models;
@@ -23,61 +24,24 @@ namespace NotesApp.Services.Implementations
 
         public List<NoteModel> GetAll() 
         {
-            var notes = _noteRepository.GetAll();
-
-            var response = new List<NoteModel>();
-
-            foreach (var note in notes)
-            {
-                var noteModel = new NoteModel
-                {
-                    Id = note.Id,
-                    Color = note.Color,
-                    Text = note.Text,
-                    Tag = (TagType)note.Tag,
-                    UserId = note.UserId
-                };
-
-                response.Add(noteModel);
-            }
-
-            return response;
+            return _noteRepository.GetAll()
+                                  .Select(note => NoteMapper.ToNoteModel(note))
+                                  .ToList();
         }
 
         public NoteModel GetById(int id) 
         {
-            var note = _noteRepository.GetById(id);
-
-            var noteModel = new NoteModel
-            {
-                Id = note.Id,
-                Color = note.Color,
-                Text = note.Text,
-                Tag = (TagType)note.Tag,
-                UserId = note.UserId
-            };
-
-            return noteModel;
+            return NoteMapper.ToNoteModel(_noteRepository.GetById(id));
         }
 
         public void Create(NoteModel model) 
         {
-            var note = new NoteDto
-            {
-                Color = model.Color,
-                Text = model.Text,
-                Tag = (int)model.Tag,
-                UserId = model.UserId
-            };
-
-            _noteRepository.Add(note);
+            _noteRepository.Add(NoteMapper.ToNoteDto(model));
         }
 
         public void Delete(int id) 
         {
-            var note = _noteRepository.GetById(id);
-            _noteRepository.Delete(note);
+            _noteRepository.Delete(_noteRepository.GetById(id));
         }
-
     }
 }

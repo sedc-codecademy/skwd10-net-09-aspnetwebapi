@@ -1,6 +1,7 @@
 ﻿using NotesApp.DAL;
 using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
+using NotesApp.Mapper;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
 using System;
@@ -35,25 +36,9 @@ namespace NotesApp.Services.Implementations
 
         public List<UserModel> GetAllUsers() 
         {
-            var users = _userRepository.GetAll();
-
-            var response = new List<UserModel>();
-
-            foreach (var user in users)
-            {
-                var userModel = new UserModel()
-                {
-                    Id = user.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Username = user.Username,
-                    Password = user.Password
-                };
-
-                response.Add(userModel);
-            }
-
-            return response;
+            return _userRepository.GetAll()
+                                  .Select(user => UserMapper.ToUserModel(user))
+                                  .ToList();
         }
 
     }
