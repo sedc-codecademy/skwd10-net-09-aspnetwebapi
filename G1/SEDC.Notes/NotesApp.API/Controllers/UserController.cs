@@ -18,9 +18,10 @@ namespace NotesApp.API.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate() 
+        public IActionResult Authenticate([FromBody] LoginModel model) 
         {
-            return Ok();
+            var response = _userService.Authenticate(model.Username, model.Password);
+            return Ok(response);
         }
 
         [HttpPost("Register")]

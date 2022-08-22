@@ -102,7 +102,7 @@ namespace NotesApp.DAL.Migrations
                             Id = 1,
                             FirstName = "Viktor",
                             LastName = "Jakovlev",
-                            Password = "P@ssw0rd",
+                            Password = "?}E?4F?N\r????",
                             Username = "vjakovlev"
                         });
                 });

@@ -11,8 +11,8 @@ using NotesApp.DAL;
 namespace NotesApp.DAL.Migrations
 {
     [DbContext(typeof(NotesAppDbContext))]
-    [Migration("20220817184525_initial")]
-    partial class initial
+    [Migration("20220822191028_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,7 +104,7 @@ namespace NotesApp.DAL.Migrations
                             Id = 1,
                             FirstName = "Viktor",
                             LastName = "Jakovlev",
-                            Password = "P@ssw0rd",
+                            Password = "?}E?4F?N\r????",
                             Username = "vjakovlev"
                         });
                 });

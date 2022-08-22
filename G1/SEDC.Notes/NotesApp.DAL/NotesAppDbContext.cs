@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace NotesApp.DAL
 {
@@ -31,6 +32,10 @@ namespace NotesApp.DAL
                 .HasForeignKey(n => n.UserId);
 
             //seeding
+            var md5 = new MD5CryptoServiceProvider();
+            var md5Data = md5.ComputeHash(Encoding.ASCII.GetBytes("P@ssw0rd"));
+            var hashedPassord = Encoding.ASCII.GetString(md5Data);
+
             modelBuilder.Entity<UserDto>()
                 .HasData(
                     new UserDto
@@ -39,8 +44,8 @@ namespace NotesApp.DAL
                         FirstName = "Viktor",
                         LastName = "Jakovlev",
                         Username = "vjakovlev",
-                        Password = "P@ssw0rd"
-                });
+                        Password = hashedPassord
+                    });
 
             modelBuilder.Entity<NoteDto>()
                 .HasData(

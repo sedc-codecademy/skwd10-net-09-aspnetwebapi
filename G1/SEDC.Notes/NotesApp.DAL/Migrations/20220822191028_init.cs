@@ -4,7 +4,7 @@
 
 namespace NotesApp.DAL.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,7 +49,7 @@ namespace NotesApp.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "FirstName", "LastName", "Password", "Username" },
-                values: new object[] { 1, "Viktor", "Jakovlev", "P@ssw0rd", "vjakovlev" });
+                values: new object[] { 1, "Viktor", "Jakovlev", "?}E?4F?N\r????", "vjakovlev" });
 
             migrationBuilder.InsertData(
                 table: "Notes",
