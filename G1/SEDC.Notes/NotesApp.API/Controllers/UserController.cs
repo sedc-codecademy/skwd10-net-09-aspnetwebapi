@@ -46,7 +46,7 @@ namespace NotesApp.API.Controllers
             try
             {
                 _userService.Register(model);
-                return Ok("User sucesffully registered.");
+                return Ok("User successfully registered.");
             }
             catch (UserException ex)
             {

@@ -44,7 +44,7 @@ namespace NotesApp.Services.Implementations
 
             if (user == null) 
             {
-                throw new UserException(user.Id, user.Username, "This user does not exists in the database!");
+                throw new UserException(null, null, "This user does not exists in the database!");
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
