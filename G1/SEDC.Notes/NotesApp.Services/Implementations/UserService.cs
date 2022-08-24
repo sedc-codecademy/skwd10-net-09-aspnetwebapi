@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using NotesApp.Helpers;
 
 namespace NotesApp.Services.Implementations
 {
@@ -28,9 +29,8 @@ namespace NotesApp.Services.Implementations
 
         public UserModel Authenticate(string username, string password)
         {
-            var md5 = new MD5CryptoServiceProvider();
-            var md5Data = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
-            var hashedPassord = Encoding.ASCII.GetString(md5Data);
+
+            var hashedPassord = StringHasher.HashGenerator(password);
 
             var user = _userRepository.GetAll().SingleOrDefault(user => 
                 user.Username == username && user.Password == hashedPassord);
@@ -71,9 +71,7 @@ namespace NotesApp.Services.Implementations
 
         public void Register(RegisterModel model) 
         {
-            var md5 = new MD5CryptoServiceProvider();
-            var md5Data = md5.ComputeHash(Encoding.ASCII.GetBytes(model.Password));
-            var hashedPassord = Encoding.ASCII.GetString(md5Data);
+            var hashedPassord = StringHasher.HashGenerator(model.Password);
 
             var user = new UserDto
             {

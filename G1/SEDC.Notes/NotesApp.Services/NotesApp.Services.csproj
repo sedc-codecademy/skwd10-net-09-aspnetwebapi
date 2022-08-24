@@ -13,8 +13,9 @@
   <ItemGroup>
     <ProjectReference Include="..\NotesApp.DAL\NotesApp.DAL.csproj" />
     <ProjectReference Include="..\NotesApp.DataModels\NotesApp.DataModels.csproj" />
+    <ProjectReference Include="..\NotesApp.Helpers\NotesApp.Helpers.csproj" />
     <ProjectReference Include="..\NotesApp.Mapper\NotesApp.Mapper.csproj" />
-    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\SEDC.Notes.InerfaceModels.csproj" />
+    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\NotesApp.InerfaceModels.csproj" />
   </ItemGroup>
 
 </Project>

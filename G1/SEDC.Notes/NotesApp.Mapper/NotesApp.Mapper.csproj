@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NotesApp.DataModels\NotesApp.DataModels.csproj" />
-    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\SEDC.Notes.InerfaceModels.csproj" />
+    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\NotesApp.InerfaceModels.csproj" />
   </ItemGroup>
 
 </Project>

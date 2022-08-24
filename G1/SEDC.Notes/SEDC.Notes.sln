@@ -9,15 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.DataModels", "Note
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.DAL", "NotesApp.DAL\NotesApp.DAL.csproj", "{94873335-7B7F-4BB6-8C7A-D862D62D46F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.Notes.InerfaceModels", "SEDC.Notes.InerfaceModels\SEDC.Notes.InerfaceModels.csproj", "{FE72F0A7-5DEB-48C9-B782-BAB1B889F565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.InerfaceModels", "SEDC.Notes.InerfaceModels\NotesApp.InerfaceModels.csproj", "{FE72F0A7-5DEB-48C9-B782-BAB1B889F565}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Services", "NotesApp.Services\NotesApp.Services.csproj", "{DA1DA086-25C3-4250-8FA3-CF4E436E781B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{570C6D6B-637E-44B0-BBE4-91BA9ECBF970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Configurations", "NotesApp.Configurations\NotesApp.Configurations.csproj", "{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Configurations", "NotesApp.Configurations\NotesApp.Configurations.csproj", "{2E7C4E7D-1C8E-4572-AE41-88A5DCF7D090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Mapper", "NotesApp.Mapper\NotesApp.Mapper.csproj", "{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Mapper", "NotesApp.Mapper\NotesApp.Mapper.csproj", "{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Helpers", "NotesApp.Helpers\NotesApp.Helpers.csproj", "{27136E4E-8B4C-4FEB-8802-5C0E57ABF987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFCF5910-D7C6-495A-869E-4A5FB7E7BC69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27136E4E-8B4C-4FEB-8802-5C0E57ABF987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27136E4E-8B4C-4FEB-8802-5C0E57ABF987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27136E4E-8B4C-4FEB-8802-5C0E57ABF987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27136E4E-8B4C-4FEB-8802-5C0E57ABF987}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

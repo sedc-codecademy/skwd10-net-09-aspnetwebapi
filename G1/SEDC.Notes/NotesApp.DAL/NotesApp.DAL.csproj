@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NotesApp.DataModels\NotesApp.DataModels.csproj" />
+    <ProjectReference Include="..\NotesApp.Helpers\NotesApp.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

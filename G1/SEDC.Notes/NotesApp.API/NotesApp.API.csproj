@@ -21,7 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NotesApp.Configurations\NotesApp.Configurations.csproj" />
     <ProjectReference Include="..\NotesApp.Services\NotesApp.Services.csproj" />
-    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\SEDC.Notes.InerfaceModels.csproj" />
+    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\NotesApp.InerfaceModels.csproj" />
     <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
