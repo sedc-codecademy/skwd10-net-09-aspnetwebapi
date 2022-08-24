@@ -1,4 +1,5 @@
 //Microsoft.EntityFrameworkCore.Design
+//Microsoft.AspNetCore.Authentication.JwtBearer
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -26,6 +27,7 @@ builder.Services.Configure<AppSettings>(appConfig);
 var appSettings = appConfig.Get<AppSettings>();
 var secret = Encoding.ASCII.GetBytes(appSettings.Secret);
 
+// authentication middleware configuration
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -55,6 +57,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// If you set these in the reverse order, your requests will get 401 responses all the time
 app.UseAuthentication();
 app.UseAuthorization();
 

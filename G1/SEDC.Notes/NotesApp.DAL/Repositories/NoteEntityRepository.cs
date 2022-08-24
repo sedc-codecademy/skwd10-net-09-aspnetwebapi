@@ -38,6 +38,12 @@ namespace NotesApp.DAL.Repositories
             return note;
         }
 
+        public NoteDto GetById(int id, int userId)
+        {
+            var note = _context.Notes.SingleOrDefault(u => u.Id == id && u.UserId == userId);
+            return note;
+        }
+
         public void Update(NoteDto entity)
         {
             _context.Notes.Update(entity);

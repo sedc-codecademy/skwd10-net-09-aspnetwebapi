@@ -10,6 +10,7 @@ namespace NotesApp.DAL
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
+        T GetById(int id, int userId);
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);

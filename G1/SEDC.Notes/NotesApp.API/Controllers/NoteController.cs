@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NotesApp.Exceptions;
 using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
@@ -23,38 +24,104 @@ namespace NotesApp.API.Controllers
         [HttpGet("GetAll")]
         public IActionResult GetAllNotes() 
         {
-            var response = _noteService.GetAll();
-            return Ok(response);
+            try
+            {
+                var response = _noteService.GetAll();
+                return Ok(response);
+            }
+            catch (NoteException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong. Please contact customer support.");
+            }
         }
 
         [HttpGet("GetAllByUser")]
         public IActionResult GetAllNotesByUser() 
         {
-            //TODO: refactor this in separate private method!
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            var response = _noteService.GetAll(userId);
-            return Ok(response);
+            try
+            {
+                var userId = GetAuthorizedUserId();
+                var response = _noteService.GetAll(userId);
+                return Ok(response);
+            }
+            catch (NoteException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong. Please contact customer support.");
+            }
         }
 
         [HttpGet("GetById/{id}")]
         public IActionResult GetNoteById([FromRoute] int id) 
         {
-            var response = _noteService.GetById(id);
-            return Ok(response);
+            try
+            {
+                var userId = GetAuthorizedUserId();
+                var response = _noteService.GetById(id, userId);
+                return Ok(response);
+            }
+            catch (NoteException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong. Please contact customer support.");
+            }
         }
 
         [HttpPost("Create")]
         public IActionResult CreateNote([FromBody] NoteModel model) 
         {
-            _noteService.Create(model);
-            return Ok();
+            try
+            {
+                model.UserId = GetAuthorizedUserId();
+                _noteService.Create(model);
+                return Ok();
+            }
+            catch (NoteException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong. Please contact customer support.");
+            }
         }
 
         [HttpDelete("DeleteById/{id}")]
         public IActionResult DeleteNoteById([FromRoute] int id) 
         {
-            _noteService.Delete(id);
-            return Ok();
+            try
+            {
+                _noteService.Delete(id);
+                return Ok();
+            }
+            catch (NoteException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong. Please contact customer support.");
+            }
+        }
+
+        private int GetAuthorizedUserId() 
+        {
+            if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId)) 
+            {
+                string name = User.FindFirst(ClaimTypes.Name)?.Value;
+                throw new UserException(userId, name, "Name identifier claim does not exist!");
+            }
+            return userId;
         }
 
     }

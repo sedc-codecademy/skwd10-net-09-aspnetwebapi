@@ -31,6 +31,11 @@ namespace NotesApp.DAL.Repositories
             return result;
         }
 
+        public UserDto GetById(int id, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(UserDto entity)
         {
             var result = StaticDB.Users.FirstOrDefault(user => user.Id == entity.Id);

@@ -31,6 +31,12 @@ namespace NotesApp.DAL.Repositories
             return result;
         }
 
+        public NoteDto GetById(int id, int userId)
+        {
+            var result = StaticDB.Notes.FirstOrDefault(note => note.Id == id && note.UserId == userId);
+            return result;
+        }
+
         public void Update(NoteDto entity)
         {
             var result = StaticDB.Notes.FirstOrDefault(note => note.Id == entity.Id);

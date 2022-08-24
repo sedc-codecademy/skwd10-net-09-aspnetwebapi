@@ -11,7 +11,7 @@ namespace NotesApp.Services.Interfaces
     {
         List<NoteModel> GetAll();
         List<NoteModel> GetAll(int userId);
-        NoteModel GetById(int id);
+        NoteModel GetById(int id, int userId);
         void Create(NoteModel model);
         void Delete(int id);
     }

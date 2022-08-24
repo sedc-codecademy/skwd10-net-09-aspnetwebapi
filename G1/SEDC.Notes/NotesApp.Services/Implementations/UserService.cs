@@ -16,6 +16,8 @@ using System.Security.Claims;
 using NotesApp.Helpers;
 using NotesApp.Configurations;
 using Microsoft.Extensions.Options;
+using NotesApp.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace NotesApp.Services.Implementations
 {
@@ -35,14 +37,14 @@ namespace NotesApp.Services.Implementations
         public UserModel Authenticate(string username, string password)
         {
 
-            var hashedPassord = StringHasher.HashGenerator(password);
+            var hashedPassword = StringHasher.HashGenerator(password);
 
             var user = _userRepository.GetAll().SingleOrDefault(user => 
-                user.Username == username && user.Password == hashedPassord);
+                user.Username == username && user.Password == hashedPassword);
 
             if (user == null) 
             {
-                return null;
+                throw new UserException(user.Id, user.Username, "This user does not exists in the database!");
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -55,8 +57,7 @@ namespace NotesApp.Services.Implementations
                     {
                         new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
                         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                    }
-                    
+                    }               
                 ),
                 Expires = DateTime.UtcNow.AddDays(3),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -76,14 +77,44 @@ namespace NotesApp.Services.Implementations
 
         public void Register(RegisterModel model) 
         {
-            var hashedPassord = StringHasher.HashGenerator(model.Password);
+            if (string.IsNullOrEmpty(model.FirstName)) 
+            {
+                throw new UserException(null, model.Username, "First name is required!");
+            }
+
+            if (string.IsNullOrEmpty(model.LastName))
+            {
+                throw new UserException(null, model.Username, "Last name is required!");
+            }
+
+            if (string.IsNullOrEmpty(model.Username))
+            {
+                throw new UserException(null, model.Username, "Usernamew is required!");
+            }
+
+            if (ValidateUsername(model.Username))
+            {
+                throw new UserException(null, model.Username, "Username alreay exsits!");
+            }
+
+            if (!ValidatePassword(model.Password)) 
+            {
+                throw new UserException(null, model.Username, "Password is too weak!");
+            }
+
+            if (model.Password != model.ConfirmPassword) 
+            {
+                throw new UserException(null, model.Username, "Password did not match!");
+            }
+
+            var hashedPassword = StringHasher.HashGenerator(model.Password);
 
             var user = new UserDto
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Username = model.Username,
-                Password = hashedPassord
+                Password = hashedPassword
             };
 
             _userRepository.Add(user);
@@ -94,6 +125,19 @@ namespace NotesApp.Services.Implementations
             return _userRepository.GetAll()
                                   .Select(user => UserMapper.ToUserModel(user))
                                   .ToList();
+        }
+
+
+        private bool ValidateUsername(string username) 
+        {
+            return _userRepository.GetAll().Any(user => user.Username == username);
+        }
+
+        private bool ValidatePassword(string password) 
+        {
+            var passwordRegex = new Regex("^(?=.*[0-9])(?=.*[a-z]).{6,20}$");
+            var match = passwordRegex.Match(password);
+            return match.Success;
         }
  
     }

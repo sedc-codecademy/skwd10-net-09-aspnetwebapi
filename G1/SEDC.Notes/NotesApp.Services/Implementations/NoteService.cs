@@ -1,6 +1,7 @@
 ﻿using NotesApp.DAL;
 using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
+using NotesApp.Exceptions;
 using NotesApp.Mapper;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Enums;
@@ -37,18 +38,28 @@ namespace NotesApp.Services.Implementations
                                   .ToList();
         }
 
-        public NoteModel GetById(int id) 
+        public NoteModel GetById(int id, int userId) 
         {
-            return NoteMapper.ToNoteModel(_noteRepository.GetById(id));
+            return NoteMapper.ToNoteModel(_noteRepository.GetById(id, userId));
         }
 
         public void Create(NoteModel model) 
         {
+            if (string.IsNullOrEmpty(model.Text)) 
+            {
+                throw new NoteException(model.Id, model.UserId, "Text field is required");
+            }
+
             _noteRepository.Add(NoteMapper.ToNoteDto(model));
         }
 
         public void Delete(int id) 
         {
+            if (id == null) 
+            {
+                throw new NoteException(id, null, "Id is required");
+            }
+
             _noteRepository.Delete(_noteRepository.GetById(id));
         }
     }
