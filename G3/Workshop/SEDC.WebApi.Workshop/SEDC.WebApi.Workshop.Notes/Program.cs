@@ -1,3 +1,4 @@
+using SEDC.WebApi.Workshop.Notes.Common.Models;
 using SEDC.WebApi.Workshop.Notes.DependencyInjection;
 
 namespace SEDC.WebApi.Workshop.Notes
@@ -15,8 +16,14 @@ namespace SEDC.WebApi.Workshop.Notes
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Configuring AppSettings section
+            var appConfig = builder.Configuration.GetSection("AppSettings");
+
+            // Using AppSettings
+            var appSettings = appConfig.Get<AppSettings>();
+
             builder.Services
-                .RegisterDataDependencies()
+                .RegisterDataDependencies(appSettings.ConnectionString)
                 .RegisterServicesDependencies();
 
             builder.Services.AddControllers();
