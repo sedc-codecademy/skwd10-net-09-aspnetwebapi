@@ -14,6 +14,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using NotesApp.Helpers;
+using NotesApp.Configurations;
+using Microsoft.Extensions.Options;
 
 namespace NotesApp.Services.Implementations
 {
@@ -21,10 +23,13 @@ namespace NotesApp.Services.Implementations
     public class UserService : IUserService
     {
         private readonly IRepository<UserDto> _userRepository;
+        private readonly AppSettings _appSettings;
 
-        public UserService(IRepository<UserDto> userRepository)
+        public UserService(IRepository<UserDto> userRepository, 
+                           IOptions<AppSettings> options)
         {
             _userRepository = userRepository;
+            _appSettings = options.Value;
         }
 
         public UserModel Authenticate(string username, string password)
@@ -37,11 +42,11 @@ namespace NotesApp.Services.Implementations
 
             if (user == null) 
             {
-                //TODO: implement validation
+                return null;
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("3t6w9z$C&F)H@McQ");
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
 
             var tokenDescriptior = new SecurityTokenDescriptor()
             {

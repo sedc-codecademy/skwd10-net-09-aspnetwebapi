@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
@@ -6,6 +7,7 @@ using SEDC.Notes.InerfaceModels.Models;
 
 namespace NotesApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -17,6 +19,7 @@ namespace NotesApp.API.Controllers
             _userService = userService;
         }
 
+        [AllowAnonymous]
         [HttpPost("Authenticate")]
         public IActionResult Authenticate([FromBody] LoginModel model) 
         {
@@ -24,6 +27,7 @@ namespace NotesApp.API.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpPost("Register")]
         public IActionResult Register([FromBody] RegisterModel model) 
         {

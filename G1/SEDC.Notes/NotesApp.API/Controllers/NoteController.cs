@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
+using System.Security.Claims;
 
 namespace NotesApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class NoteController : ControllerBase
@@ -21,6 +24,15 @@ namespace NotesApp.API.Controllers
         public IActionResult GetAllNotes() 
         {
             var response = _noteService.GetAll();
+            return Ok(response);
+        }
+
+        [HttpGet("GetAllByUser")]
+        public IActionResult GetAllNotesByUser() 
+        {
+            //TODO: refactor this in separate private method!
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var response = _noteService.GetAll(userId);
             return Ok(response);
         }
 

@@ -29,6 +29,14 @@ namespace NotesApp.Services.Implementations
                                   .ToList();
         }
 
+        public List<NoteModel> GetAll(int userId)
+        {
+            return _noteRepository.GetAll()
+                                  .Where(note => note.UserId == userId)
+                                  .Select(note => NoteMapper.ToNoteModel(note))
+                                  .ToList();
+        }
+
         public NoteModel GetById(int id) 
         {
             return NoteMapper.ToNoteModel(_noteRepository.GetById(id));
