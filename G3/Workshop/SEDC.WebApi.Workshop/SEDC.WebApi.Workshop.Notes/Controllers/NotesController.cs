@@ -42,5 +42,34 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpPost("create-note")]
+        public ActionResult CreateNote(CreateNote request)
+        {
+            try
+            {
+                var noteUrl = _noteService.AddNote(request);
+                return Created(noteUrl, null);
+                //return StatusCode(StatusCodes.Status201Created);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("delete-note/{id}/user/{userId}")]
+        public ActionResult DeleteNote(int id, int userId)
+        {
+            try
+            {
+                _noteService.DeleteNote(id, userId);
+                return StatusCode(StatusCodes.Status204NoContent);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
