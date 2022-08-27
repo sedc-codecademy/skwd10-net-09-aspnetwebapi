@@ -67,6 +67,7 @@ namespace SEDC.WebApi.Class08.Adonet.Services
                 {
                     note = new Note
                     {
+                        //Id = reader.GetInt32(reader["Id"])
                         Id = (int)reader["Id"],
                         Color = reader["Color"].ToString(),
                         Text = reader["Text"].ToString(),

@@ -16,5 +16,16 @@ namespace SEDC.WebApi.Class08.Adonet.Controllers
             //var note = notesService.GetNoteByUserIdAndNoteId(1, 2);
             return Ok(notes);
         }
+
+        [HttpGet("dapper")]
+        public ActionResult GetAll()
+        {
+            var noteService = new NoteDapperService();
+            noteService.Add("Dapper", "Black", 5, 1);
+            var notes = noteService.GetAll();
+            var note = noteService.GetByUserIdAndNoteId(1, 7);
+
+            return Ok(notes);
+        }
     }
 }
