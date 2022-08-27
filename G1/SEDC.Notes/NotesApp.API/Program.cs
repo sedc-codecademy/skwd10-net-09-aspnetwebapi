@@ -1,9 +1,11 @@
 //Microsoft.EntityFrameworkCore.Design
 //Microsoft.AspNetCore.Authentication.JwtBearer
+//AutoMapper.Extensions.Microsoft.DependencyInjection
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using NotesApp.Configurations;
+using System;
 using System.Text;
 using Utilities;
 
@@ -18,6 +20,9 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// automapper setup
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // configure AppSettings class
 var appConfig = builder.Configuration.GetSection("AppSettings");
