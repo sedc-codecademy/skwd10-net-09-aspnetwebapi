@@ -2,7 +2,6 @@
 
 ## Part 1
 We need to create an API that keeps and manages our favorite movies. It should have the option to:
-* keep data in a fixed static class
 
 * get movie by id (two methods: route param and query string)
 * get all movies 
