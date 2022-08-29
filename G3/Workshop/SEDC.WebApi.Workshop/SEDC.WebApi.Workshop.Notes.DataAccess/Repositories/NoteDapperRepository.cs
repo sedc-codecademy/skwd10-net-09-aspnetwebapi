@@ -17,7 +17,13 @@ namespace SEDC.WebApi.Workshop.Notes.DataAccess.Repositories
 
         public int Delete(Note entity)
         {
-            throw new NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            var query = @"delete from dbo.Note
+                                where Id = @id";
+
+            conn.Open();
+            conn.Query(query, new { id = entity.Id });
+            return entity.Id;
         }
 
         public IEnumerable<Note> FilterBy(Func<Note, bool> filter)
@@ -26,6 +32,14 @@ namespace SEDC.WebApi.Workshop.Notes.DataAccess.Repositories
             var sqlQuery = "select * from dbo.Note";
             
             conn.Open();
+
+            //var query = @"select * from dbo.Note
+            //            where Id in @ids";
+            //var ids = new int[] { 1, 2, 3, 4 };
+
+            //var notes = conn.Query<Note>(query, 
+            //    new { ids = ids.ToArray() });
+
             return conn.Query<Note>(sqlQuery).Where(filter);
         }
 
@@ -55,12 +69,42 @@ namespace SEDC.WebApi.Workshop.Notes.DataAccess.Repositories
 
         public int Insert(Note entity)
         {
-            throw new NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            var sqlQuery = @"insert into dbo.Note([Text], [Color], [Tag], [UserId])
+                    values (@text, @color, @tag, @userId)";
+            
+            conn.Open();
+            conn.Query(sqlQuery,
+                new
+                {
+                    text = entity.Text,
+                    color = entity.Color,
+                    tag = entity.Tag,
+                    userId = entity.UserId
+                });
+            return entity.Id;
         }
 
         public int Update(Note entity)
         {
-            throw new NotImplementedException();
+            using SqlConnection conn = new SqlConnection (_connectionString);
+            var sqlQuery = @"UPDATE dbo.Note
+                    SET Text = @noteText, 
+                        Color = @noteColor, 
+                        Tag = @noteTag, 
+                        UserId = @noteUserId
+                    WHERE Id = @id";
+            conn.Open();
+
+            conn.Query(sqlQuery, new
+            {
+                id = entity.Id,
+                text = entity.Text,
+                color = entity.Color,
+                tag = entity.Tag,
+                userId = entity.UserId
+            });
+            return entity.Id;
         }
     }
 }
