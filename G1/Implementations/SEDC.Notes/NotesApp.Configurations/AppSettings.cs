@@ -10,5 +10,6 @@ namespace NotesApp.Configurations
     {
         public string ConnectionString { get; set; }
         public string Secret { get; set; }
+        public string TestDataApi { get; set; }
     }
 }
