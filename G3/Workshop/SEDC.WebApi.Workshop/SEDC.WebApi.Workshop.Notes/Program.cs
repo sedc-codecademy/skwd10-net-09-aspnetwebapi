@@ -18,6 +18,7 @@ namespace SEDC.WebApi.Workshop.Notes
 
             // Configuring AppSettings section
             var appConfig = builder.Configuration.GetSection("AppSettings");
+            builder.Services.Configure<AppSettings>(appConfig);
 
             // Using AppSettings
             var appSettings = appConfig.Get<AppSettings>();

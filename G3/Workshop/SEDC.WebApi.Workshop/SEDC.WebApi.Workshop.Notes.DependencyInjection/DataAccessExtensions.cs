@@ -18,9 +18,12 @@ namespace SEDC.WebApi.Workshop.Notes.DependencyInjection
             }
 
             //services.AddTransient<IRepository<Note>, NoteRepository>();
-            services.AddTransient<IRepository<Note>, NoteEFRepository>();
+            //services.AddTransient<IRepository<Note>, NoteEFRepository>();
+            //services.AddTransient<IRepository<Note>, NoteAdoRepository>();
+            services.AddTransient<IRepository<Note>, NoteDapperRepository>();
             //services.AddTransient<IRepository<User>, UserRepository>();
             services.AddTransient<IRepository<User>, UserEFRepository>();
+            
 
             return services;
         }

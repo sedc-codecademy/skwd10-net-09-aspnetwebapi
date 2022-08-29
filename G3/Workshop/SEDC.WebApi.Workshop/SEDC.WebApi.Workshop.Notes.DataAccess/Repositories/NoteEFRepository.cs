@@ -1,4 +1,5 @@
-﻿using SEDC.WebApi.Workshop.Notes.DataModels.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SEDC.WebApi.Workshop.Notes.DataModels.Models;
 
 namespace SEDC.WebApi.Workshop.Notes.DataAccess.Repositories
 {
