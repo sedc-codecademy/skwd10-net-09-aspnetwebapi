@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEDC.Notes.InerfaceModels.Enums
+namespace NotesApp.InerfaceModels.Enums
 {
     public enum TagType
     {

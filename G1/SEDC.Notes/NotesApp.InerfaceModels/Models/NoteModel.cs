@@ -1,11 +1,11 @@
-﻿using SEDC.Notes.InerfaceModels.Enums;
+﻿using NotesApp.InerfaceModels.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEDC.Notes.InerfaceModels.Models
+namespace NotesApp.InerfaceModels.Models
 {
     public class NoteModel
     {

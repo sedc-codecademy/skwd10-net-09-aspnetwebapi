@@ -18,7 +18,6 @@
     <ProjectReference Include="..\NotesApp.Exceptions\NotesApp.Exceptions.csproj" />
     <ProjectReference Include="..\NotesApp.Helpers\NotesApp.Helpers.csproj" />
     <ProjectReference Include="..\NotesApp.Mapper\NotesApp.Mapper.csproj" />
-    <ProjectReference Include="..\SEDC.Notes.InerfaceModels\NotesApp.InerfaceModels.csproj" />
   </ItemGroup>
 
 </Project>

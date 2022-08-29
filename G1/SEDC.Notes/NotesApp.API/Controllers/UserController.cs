@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.Exceptions;
+using NotesApp.InerfaceModels.Models;
 using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
-using SEDC.Notes.InerfaceModels.Models;
 using Serilog;
 using Serilog.Events;
 

@@ -1,6 +1,6 @@
 ﻿using NotesApp.DataModels;
-using SEDC.Notes.InerfaceModels.Enums;
-using SEDC.Notes.InerfaceModels.Models;
+using NotesApp.InerfaceModels.Enums;
+using NotesApp.InerfaceModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using NotesApp.Exceptions;
 using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
-using SEDC.Notes.InerfaceModels.Models;
 using System.Security.Claims;
 using Serilog;
 using Serilog.Events;
+using NotesApp.InerfaceModels.Models;
 
 namespace NotesApp.API.Controllers
 {

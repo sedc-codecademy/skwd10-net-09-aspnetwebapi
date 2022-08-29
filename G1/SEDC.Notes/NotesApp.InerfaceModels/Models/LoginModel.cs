@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEDC.Notes.InerfaceModels.Models
+namespace NotesApp.InerfaceModels.Models
 {
-    public class RegisterModel
+    public class LoginModel
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

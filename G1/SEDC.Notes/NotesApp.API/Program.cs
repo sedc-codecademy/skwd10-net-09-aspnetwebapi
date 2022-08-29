@@ -6,10 +6,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using NotesApp.Configurations;
+using NotesApp.Utilities;
 using Serilog;
 using System;
 using System.Text;
-using Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 

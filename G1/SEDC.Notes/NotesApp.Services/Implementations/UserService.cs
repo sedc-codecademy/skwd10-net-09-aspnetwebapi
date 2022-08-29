@@ -3,7 +3,6 @@ using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
 using NotesApp.Mapper;
 using NotesApp.Services.Interfaces;
-using SEDC.Notes.InerfaceModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +17,7 @@ using NotesApp.Configurations;
 using Microsoft.Extensions.Options;
 using NotesApp.Exceptions;
 using System.Text.RegularExpressions;
+using NotesApp.InerfaceModels.Models;
 
 namespace NotesApp.Services.Implementations
 {

@@ -11,15 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Utilities
+namespace NotesApp.Utilities
 {
     //Microsoft.Extensions.DependencyInjection.Abstractions
     //Microsoft.EntityFrameworkCore.SqlServer
     public static class DependencyInjectionExtension
     {
-        public static IServiceCollection RegisterModule(this IServiceCollection services, string connectionString) 
+        public static IServiceCollection RegisterModule(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<NotesAppDbContext>(options => 
+            services.AddDbContext<NotesAppDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });

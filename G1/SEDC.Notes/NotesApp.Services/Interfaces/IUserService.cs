@@ -1,4 +1,4 @@
-﻿using SEDC.Notes.InerfaceModels.Models;
+﻿using NotesApp.InerfaceModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
