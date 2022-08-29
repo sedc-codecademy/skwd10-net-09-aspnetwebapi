@@ -77,6 +77,8 @@ namespace NotesApp.Services.Implementations
 
         public void Register(RegisterModel model) 
         {
+            //throw new Exception("Fatal Error");
+
             if (string.IsNullOrEmpty(model.FirstName)) 
             {
                 throw new UserException(null, model.Username, "First name is required!");

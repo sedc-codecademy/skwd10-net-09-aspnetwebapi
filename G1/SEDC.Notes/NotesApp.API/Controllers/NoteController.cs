@@ -6,6 +6,8 @@ using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
 using System.Security.Claims;
+using Serilog;
+using Serilog.Events;
 
 namespace NotesApp.API.Controllers
 {
@@ -31,10 +33,12 @@ namespace NotesApp.API.Controllers
             }
             catch (NoteException ex)
             {
+                Log.Error("USER {userId}.{noteId}: {message}", ex.UserId, ex.NoteId, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }
@@ -50,10 +54,12 @@ namespace NotesApp.API.Controllers
             }
             catch (NoteException ex)
             {
+                Log.Error("USER {userId}.{noteId}: {message}", ex.UserId, ex.NoteId, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }
@@ -69,10 +75,12 @@ namespace NotesApp.API.Controllers
             }
             catch (NoteException ex)
             {
+                Log.Error("USER {userId}.{noteId}: {message}", ex.UserId, ex.NoteId, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }
@@ -88,10 +96,12 @@ namespace NotesApp.API.Controllers
             }
             catch (NoteException ex)
             {
+                Log.Error("USER {userId}.{noteId}: {message}", ex.UserId, ex.NoteId, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }
@@ -106,10 +116,12 @@ namespace NotesApp.API.Controllers
             }
             catch (NoteException ex)
             {
+                Log.Error("USER {userId}.{noteId}: {message}", ex.UserId, ex.NoteId, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }

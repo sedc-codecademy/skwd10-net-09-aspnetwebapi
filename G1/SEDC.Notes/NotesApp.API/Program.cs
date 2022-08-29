@@ -1,15 +1,20 @@
 //Microsoft.EntityFrameworkCore.Design
 //Microsoft.AspNetCore.Authentication.JwtBearer
 //AutoMapper.Extensions.Microsoft.DependencyInjection
+//Serilog.AspNetCore
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using NotesApp.Configurations;
+using Serilog;
 using System;
 using System.Text;
 using Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.File("Logs/logs.txt"));
 
 builder.Services.AddControllers().AddJsonOptions(options => 
 {

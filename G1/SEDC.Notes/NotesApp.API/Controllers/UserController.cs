@@ -5,6 +5,8 @@ using NotesApp.Exceptions;
 using NotesApp.Services.Implementations;
 using NotesApp.Services.Interfaces;
 using SEDC.Notes.InerfaceModels.Models;
+using Serilog;
+using Serilog.Events;
 
 namespace NotesApp.API.Controllers
 {
@@ -27,14 +29,17 @@ namespace NotesApp.API.Controllers
             try
             {
                 var response = _userService.Authenticate(model.Username, model.Password);
+                Log.Information($"User {response.FirstName} {response.LastName} has been succesfully authenticate.");
                 return Ok(response);
             }
             catch (UserException ex)
             {
+                Log.Error("USER {userId}.{name}: {message}", ex.UserId, ex.Name, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }
@@ -46,14 +51,17 @@ namespace NotesApp.API.Controllers
             try
             {
                 _userService.Register(model);
+                Log.Information($"User {model.FirstName} {model.LastName} has been succesfully registered.");
                 return Ok("User successfully registered.");
             }
             catch (UserException ex)
             {
+                Log.Error("USER {userId}.{name}: {message}", ex.UserId, ex.Name, ex.Message);
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Write(LogEventLevel.Fatal, ex.Message);
                 return BadRequest("Something went wrong. Please contact customer support.");
             }
         }
