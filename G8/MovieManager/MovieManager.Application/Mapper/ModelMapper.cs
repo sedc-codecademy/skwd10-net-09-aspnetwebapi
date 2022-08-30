@@ -19,7 +19,8 @@ namespace MovieManager.Application.Mapper
                 .ForMember(m => m.Id, m => m.Ignore())
                 .ForMember(y => y.Movies, y => y.Ignore());
 
-                x.CreateMap<MovieDto, Movie>();
+                x.CreateMap<MovieDto, Movie>().ReverseMap();
+
             });
 
             return cfg;

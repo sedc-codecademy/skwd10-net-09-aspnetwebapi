@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MovieManager.Application.Dto;
 using MovieManager.Application.Repositories;
 using MovieManager.Domain.Enums;
+using MovieManager.Domain.Exceptions;
 using MovieManager.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -24,36 +26,57 @@ namespace MovieManager.Application.Services.Implementation
             this.mapper = mapper;
         }
 
-        public int CreateMovie(MovieDto movie)
+        public int CreateMovie(MovieDto movie, int userId)
         {
-            var user = _userRepository.GetById(movie.UserId);
+            var user = _userRepository.GetById(userId);
 
             if (user == null)
-                throw new Exception("User not found!");
+                throw new NotFoundException("User not found!");
 
-            var mappedMovie = mapper.Map<Movie>(movie);
+            var mappedMovie = new Movie(movie.Title, movie.Description, movie.Year, movie.Genre, movie.Rating, user);
+            
             _repository.Create(mappedMovie);
             return mappedMovie.Id;
         }
 
-        public void DeleteMovie(int movieId, int userId)
+        public int DeleteMovie(int movieId, int userId)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Query().Include(x => x.Movies).FirstOrDefault(x => x.Id == userId);
+
+            if (user == null)
+                throw new NotFoundException("User not found!");
+
+            Movie deletedMovie = user.RemoveMovie(movieId);
+            _userRepository.Update(user);
+            return deletedMovie.Id;
         }
 
         public MovieDto GetMovie(int movieId, int userId)
         {
-            throw new NotImplementedException();
+            var movie = _repository.Query().Include(x => x.User).FirstOrDefault(x => x.Id == movieId);
+
+            if (movie == null)
+                throw new NotFoundException("Movie does not exist!");
+
+            movie.ValidateOwner(userId);
+
+            return mapper.Map<MovieDto>(movie);
         }
 
         public IEnumerable<MovieDto> GetUserMovies(int userId)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Query().Include(x => x.Movies).FirstOrDefault(x => x.Id == userId);
+
+            if (user == null)
+                throw new NotFoundException("User not found!");
+
+            return user.Movies.Select(x => mapper.Map<MovieDto>(x));
         }
 
         public IEnumerable<MovieDto> GetUserMoviesByGenre(MovieGenre genre, int userId)
         {
-            throw new NotImplementedException();
+            var movies = _repository.Query().Where(x => x.Genre == genre && x.User.Id == userId);
+            return movies.Select(x => mapper.Map<MovieDto>(x));
         }
     }
 }

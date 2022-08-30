@@ -5,6 +5,8 @@ using MovieManager.Application.Services;
 using MovieManager.Application.Services.Implementation;
 using MovieManager.Domain.Models;
 using MovieManager.Infrastructure.Repositories;
+using MovieManager.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IRepository<User>, UserRepository>();
-builder.Services.AddScoped<IRepository<Movie>, MovieRepository>();
+builder.Services.AddScoped<IRepository<User>, BaseEFRepository<User>>();
+builder.Services.AddScoped<IRepository<Movie>, BaseEFRepository<Movie>>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddSingleton(sp => ModelMapper.GetConfiguration());
@@ -25,6 +27,9 @@ builder.Services.AddScoped(sp =>
     MapperConfiguration config = sp.GetRequiredService<MapperConfiguration>();
     return config.CreateMapper();
 });
+
+builder.Services.AddDbContext<ApplicationDbContext>(x =>
+                            x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

@@ -13,7 +13,7 @@ namespace MovieManager.Application.Services
         MovieDto GetMovie(int movieId, int userId);
         IEnumerable<MovieDto> GetUserMovies(int userId);
         IEnumerable<MovieDto> GetUserMoviesByGenre(MovieGenre genre, int userId);
-        int CreateMovie(MovieDto movie);
-        void DeleteMovie(int movieId, int userId);
+        int CreateMovie(MovieDto movie, int userId);
+        int DeleteMovie(int movieId, int userId);
     }
 }
