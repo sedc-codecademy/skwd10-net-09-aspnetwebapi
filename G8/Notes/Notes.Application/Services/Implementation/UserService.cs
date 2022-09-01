@@ -118,5 +118,19 @@ namespace Notes.Application.Services.Implementation
             user.Password = passwordHasher.HashPassword(model.Password);
             repository.Update(user);
         }
+
+        public UserModel PasswordLogin(UserLoginModel model)
+        {
+            var user = repository.GetAll()
+                .FirstOrDefault(x => x.Username == model.UsernameOrEmail || x.Email == model.UsernameOrEmail) ??
+                throw new Exception("Auth Excetion");
+
+            if(user.Password != passwordHasher.HashPassword(model.Password))
+            {
+                throw new Exception("Auth Excetion");
+            }
+
+            return user.ToModel();
+        }
     }
 }

@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Notes.Application;
 using Notes.Application.Exceptions;
 using Notes.Application.Models;
 using Notes.Application.Services;
+using System.Security.Claims;
 
 namespace Notes.Api.Controllers
 {
@@ -10,6 +13,7 @@ namespace Notes.Api.Controllers
     // put - za menuvanje na celiot model
     // patch - koga sakame da smenime direktva nekoe prop - retko se koristi
     // post za povikuvanje metodi 
+    [Authorize(Policy = SystemPolicies.MustHaveId)]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class NoteController : ControllerBase
@@ -66,11 +70,12 @@ namespace Notes.Api.Controllers
         }
         //note/{123123123}
         [HttpPut("{id:int}")] 
-        public ActionResult<EditNoteModel> EditNote([FromBody] EditNoteModel model, int id, int? userId)
+        public ActionResult<EditNoteModel> EditNote([FromBody] EditNoteModel model, int id)
         {
-            if (!userId.HasValue)
-            {
-                return Unauthorized();
+            var userIdString = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)!.Value;
+            
+            if(!int.TryParse(userIdString, out int userId)){
+                throw new Exception("");
             }
 
             if (!ModelState.IsValid)
@@ -79,7 +84,7 @@ namespace Notes.Api.Controllers
             }
             try
             {
-                var note = service.EditNote(model, id, userId.Value);
+                var note = service.EditNote(model, id, userId);
                 return Ok(note);
                 //return StatusCode(StatusCodes.Status200OK, note);
             }

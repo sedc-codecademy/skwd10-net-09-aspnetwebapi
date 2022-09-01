@@ -16,5 +16,7 @@ namespace Notes.Application.Services
         UserModel GetUserByCode(string code);
 
         void UpdatePasswordByCode(UpdatePasswordModel model, string code);
+
+        UserModel PasswordLogin(UserLoginModel model);
     }
 }

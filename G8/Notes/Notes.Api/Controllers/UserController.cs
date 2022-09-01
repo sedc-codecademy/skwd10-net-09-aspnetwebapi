@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Notes.Application;
 using Notes.Application.Models;
 using Notes.Application.Services;
+using System.Security.Claims;
 
 namespace Notes.Api.Controllers
 {
@@ -10,16 +15,23 @@ namespace Notes.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService userService;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             this.userService = userService;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         [HttpPost("register")]// api/v1/user/regiter
-        public ActionResult Register(CreateUserModel model)
+        public async Task<ActionResult> Register(CreateUserModel model)
         {
-            var user = userService.CreateUser(model);
+            var user = new IdentityUser();
+            var result = await userManager.CreateAsync(user, model.Password);
+            await userManager.AddToRoleAsync(user, NoteRoles.User);
+            //var user = userService.CreateUser(model);
             return Created("api/v1/user/login", user);
         }
 
@@ -50,6 +62,30 @@ namespace Notes.Api.Controllers
         {
             userService.UpdatePasswordByCode(model, code);
             return RedirectToAction("login");
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult> Login(UserLoginModel model)
+        {
+            //var user = userService.PasswordLogin(model);
+            //var identities = new List<ClaimsIdentity> // 
+            //{
+            //    new ClaimsIdentity(new List<Claim>
+            //        {
+            //            new Claim(ClaimTypes.Name, user.Name),
+            //            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            //            new Claim(ClaimTypes.Role, NoteRoles.User)
+            //        },
+            //        CookieAuthenticationDefaults.AuthenticationScheme)
+            //};
+            //var principal = new ClaimsPrincipal(identities); // <-- userot
+            //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            Microsoft.AspNetCore.Identity.SignInResult? result = await signInManager.PasswordSignInAsync(model.UsernameOrEmail, model.Password, model.RememberMe, lockoutOnFailure: true);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            return Unauthorized();
         }
     }
 }
