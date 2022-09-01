@@ -1,4 +1,5 @@
 ﻿using MovieManager.Domain.Enums;
+using MovieManager.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace MovieManager.Domain.Models
 {
-    public class Movie
+    public class Movie : IEntity
     {
         private Movie()
         {
 
         }
+
         public Movie(string title, string description, int year, MovieGenre genre, MovieRating rating, User user)
         {
             Title = title;
@@ -30,5 +32,11 @@ namespace MovieManager.Domain.Models
         public MovieGenre Genre { get; set; }
         public MovieRating Rating { get; set; }
         public User User { get; set; }
+        public void ValidateOwner(int userId)
+        {
+            if (User.Id != userId)
+                throw new UserIsNotOwnerException("User is not owner!", userId);
+        }
+
     }
 }

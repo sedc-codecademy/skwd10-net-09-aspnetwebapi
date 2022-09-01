@@ -35,6 +35,11 @@ namespace MovieManager.Infrastructure.Repositories
             return MovieManagerStaticDb.Users.FirstOrDefault(x => x.Id == id);
         }
 
+        public IQueryable<User> Query()
+        {
+            throw new NotImplementedException();
+        }
+
         public User Update(User entity)
         {
             var user = GetById(entity.Id);
