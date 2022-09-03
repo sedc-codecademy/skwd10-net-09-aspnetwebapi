@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieManager.Application.Dto;
 using MovieManager.Application.Services;
@@ -7,6 +8,7 @@ using MovieManager.Domain.Exceptions;
 
 namespace MovieManager.API.Controllers
 {
+    [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class MovieController : ControllerBase
