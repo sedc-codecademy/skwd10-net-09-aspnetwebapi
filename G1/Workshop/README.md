@@ -32,6 +32,19 @@ Create an end-to-end implementation for Users. A User has:
 * Favorite Genre
 * MoviesList
 
-## Bonus
+## Part 4
 
 Implement authentication/authorization with tokens
+
+## Part 5
+
+Implement exception handling mechanism and add logs
+
+## Part 6 (optional)
+
+Create UI in framework by your choice or vanilla javascript :)
+
+
+
+
+
