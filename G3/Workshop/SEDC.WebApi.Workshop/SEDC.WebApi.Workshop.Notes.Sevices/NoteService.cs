@@ -18,9 +18,9 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             _userRepositry = userRepositry;
         }
 
-        public string AddNote(CreateNote note)
+        public string AddNote(CreateNote note, int userId)
         {
-            var user = _userRepositry.GetById(note.UserId);
+            var user = _userRepositry.GetById(userId);
             
             if(user == null)
             {
@@ -30,7 +30,7 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             var newwNote = new Note
             {
                 Text = note.Text,
-                UserId = note.UserId,
+                UserId = userId,
                 Color = note.Color,
                 Tag = note.Tag
             };
@@ -38,7 +38,7 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             _noteRepository.Insert(newwNote);
 
             var url = 
-                $"http://localhost:5277/api/v1/notes/{newwNote.Id}/user/{newwNote.UserId}";
+                $"http://localhost:5277/api/v1/notes/get-all";
             return url;
         }
 

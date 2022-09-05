@@ -5,10 +5,9 @@ using SEDC.WebApi.Workshop.Notes.Sevices.Interfaces;
 
 namespace SEDC.WebApi.Workshop.Notes.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -18,6 +17,7 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
         }
 
         [HttpPost]
+        [Route("register")]
         [AllowAnonymous]
         public ActionResult RegisterUser([FromBody]RegisterUser request)
         {
@@ -25,6 +25,22 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
             {
                 _userService.Register(request);
                 return StatusCode(StatusCodes.Status201Created);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("login")]
+        [AllowAnonymous]
+        public ActionResult<UserLoginDto> Login([FromBody]LoginModel request)
+        {
+            try
+            {
+                var user = _userService.Login(request);
+                return Ok(user);
             }
             catch (Exception ex)
             {

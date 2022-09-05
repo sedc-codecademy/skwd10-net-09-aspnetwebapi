@@ -5,16 +5,24 @@ using SEDC.WebApi.Workshop.Notes.Sevices.Interfaces;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Extensions.Options;
+using SEDC.WebApi.Workshop.Notes.Common.Models;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace SEDC.WebApi.Workshop.Notes.Sevices
 {
     public class UserService : IUserService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly string _secret;
 
-        public UserService(IRepository<User> userRepository)
+        public UserService(IRepository<User> userRepository,
+            IOptions<AppSettings> options)
         {
             _userRepository = userRepository;
+            _secret = options.Value.Secret;
         }
 
         public void Register(RegisterUser request)
@@ -47,7 +55,48 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
 
         public UserLoginDto Login(LoginModel request)
         {
-            throw new NotImplementedException();
+            var user = _userRepository
+                .GetAll()
+                .FirstOrDefault(u => u.Username.Equals(request.Username,
+                                StringComparison.InvariantCultureIgnoreCase));
+
+            if(user == null)
+            {
+                throw new Exception("User with that username does not exists");
+            }
+
+            var hashedPassword = HashPassword(request.Password);
+            if(user.Password != hashedPassword)
+            {
+                throw new Exception("Password is not valid");
+            }
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new System.Security.Claims.ClaimsIdentity(
+                    new[]
+                    {
+                        new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    }
+                    ),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(
+                        new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            var login = new UserLoginDto
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Token = tokenHandler.WriteToken(token)
+            };
+            return login;
         }
 
         private bool IsValidPassword(string password)

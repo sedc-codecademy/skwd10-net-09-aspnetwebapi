@@ -11,6 +11,5 @@ namespace SEDC.WebApi.Workshop.Notes.ServiceModels.NotesModels
         [MaxLength(20)]
         public string Color { get; set; }
         public int Tag { get; set; }
-        public int UserId { get; set; }
     }
 }
