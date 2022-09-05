@@ -41,7 +41,7 @@ namespace Notes.Tests
             };
 
             Mock<INoteService> noteService = new Mock<INoteService>();
-            noteService.Setup(note => note.GetNoteAsync(1)).Returns(Task.FromResult(noteDto));
+            noteService.Setup(note => note.GetNoteAsync(1)).ReturnsAsync(noteDto);
             IUserService userService = Mock.Of<IUserService>();
 
             UsersController usersController = new UsersController(userService, noteService.Object);
@@ -51,9 +51,11 @@ namespace Notes.Tests
 
             //Assert
             Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
-            Assert.AreEqual(result.Value.Id, noteDto.Id);
-            Assert.AreEqual(result.Value.Name, noteDto.Name);
-            Assert.AreEqual(result.Value.Description, noteDto.Description);
+            OkObjectResult castedResult = (OkObjectResult)result.Result;
+            NoteDto value = (NoteDto)castedResult.Value;
+            Assert.AreEqual(value.Id, noteDto.Id);
+            Assert.AreEqual(value.Name, noteDto.Name);
+            Assert.AreEqual(value.Description, noteDto.Description);
         }
     }
 }
