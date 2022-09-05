@@ -10,6 +10,7 @@ namespace SEDC.WebApi.Workshop.Notes.DependencyInjection
             (this IServiceCollection services)
         {
             services.AddTransient<INoteService, NoteService>();
+            services.AddTransient<IUserService, UserService>();
 
             return services;
         }
