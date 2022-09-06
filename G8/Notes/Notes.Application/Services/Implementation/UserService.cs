@@ -51,7 +51,6 @@ namespace Notes.Application.Services.Implementation
         {
             var password = passwordHasher.HashPassword(model.Password);
             var user = new User(model.UserName, password, model.Name, model.LastName, model.Email);
-
             repository.Create(user);
             return user.ToModel();
         }
