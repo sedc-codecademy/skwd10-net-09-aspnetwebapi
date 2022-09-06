@@ -21,6 +21,8 @@ namespace MovieManager.Application.Mapper
 
                 x.CreateMap<MovieDto, Movie>().ReverseMap();
 
+                x.CreateMap<UserDto, User>().ReverseMap();
+
             });
 
             return cfg;

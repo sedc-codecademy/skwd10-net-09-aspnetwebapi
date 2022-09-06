@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SEDC.WebApi.Workshop.Notes.ServiceModels.NotesModels;
 using SEDC.WebApi.Workshop.Notes.Sevices.Interfaces;
+using System.Security.Claims;
 
 namespace SEDC.WebApi.Workshop.Notes.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class NotesController : ControllerBase
+    public class NotesController : BaseController
     {
         private readonly INoteService _noteService;
 
@@ -15,12 +17,12 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
             _noteService = noteService;
         }
 
-        [HttpGet("/user/{userId}")]
-        public ActionResult<IEnumerable<NoteDto>> GetNotes(int userId)
+        [HttpGet("get-all")]
+        public ActionResult<IEnumerable<NoteDto>> GetNotes()
         {
             try
             {
-                var notes = _noteService.GetUserNotes(userId);
+                var notes = _noteService.GetUserNotes(UserId);
                 return Ok(notes);
             }
             catch (Exception ex)
@@ -29,12 +31,12 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
             }
         }
 
-        [HttpGet("{id}/user/{userId}")]
-        public ActionResult<NoteDto> Get(int id, int userId)
+        [HttpGet("get-by-id/{id}")]
+        public ActionResult<NoteDto> Get(int id)
         {
             try
             {
-                var note = _noteService.GetNote(id, userId);
+                var note = _noteService.GetNote(id, UserId);
                 return Ok(note);
             }
             catch (Exception ex)
@@ -48,7 +50,7 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
         {
             try
             {
-                var noteUrl = _noteService.AddNote(request);
+                var noteUrl = _noteService.AddNote(request, UserId);
                 return Created(noteUrl, null);
                 //return StatusCode(StatusCodes.Status201Created);
             }
@@ -58,12 +60,12 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
             }
         }
 
-        [HttpDelete("delete-note/{id}/user/{userId}")]
-        public ActionResult DeleteNote(int id, int userId)
+        [HttpDelete("delete-note/{id}")]
+        public ActionResult DeleteNote(int id)
         {
             try
             {
-                _noteService.DeleteNote(id, userId);
+                _noteService.DeleteNote(id, UserId);
                 return StatusCode(StatusCodes.Status204NoContent);
             }
             catch (Exception ex)

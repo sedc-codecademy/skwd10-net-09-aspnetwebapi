@@ -17,10 +17,11 @@ namespace MovieManager.Infrastructure
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
-        
+        public DbSet<Role> Roles { get; set; }
     }
 }

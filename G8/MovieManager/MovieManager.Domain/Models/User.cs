@@ -30,6 +30,7 @@ namespace MovieManager.Domain.Models
         public string LastName { get; set; } = string.Empty;
         public string FullName => $"{FirstName} {LastName}";
         public IList<Movie> Movies { get; set; } = new List<Movie>();
+        public IList<Role> Roles { get; set; } = new List<Role>();
         
         public Movie RemoveMovie(int movieId)
         {

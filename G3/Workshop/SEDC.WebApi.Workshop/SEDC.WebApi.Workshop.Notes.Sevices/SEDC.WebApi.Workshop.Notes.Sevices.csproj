@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SEDC.WebApi.Workshop.Notes.Common\SEDC.WebApi.Workshop.Notes.Common.csproj" />
     <ProjectReference Include="..\SEDC.WebApi.Workshop.Notes.DataAccess\SEDC.WebApi.Workshop.Notes.DataAccess.csproj" />
     <ProjectReference Include="..\SEDC.WebApi.Workshop.Notes.DataModels\SEDC.WebApi.Workshop.Notes.DataModels.csproj" />
