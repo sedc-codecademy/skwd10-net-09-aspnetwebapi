@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Notes.Api.Middlewares;
 using Notes.Application;
+using Notes.Application.Exceptions;
 using Notes.Infrastracture.EntityFramework;
 using System.Security.Claims;
 
@@ -48,20 +50,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.Use(async (context, next) =>
-{
-    try
-    {
-        // asdasdas
-        await next();
-            // 
-    }
-    catch (Exception)
-    {
+app.UseGlobalExceptionHandler();
 
-    }
-
-});
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
