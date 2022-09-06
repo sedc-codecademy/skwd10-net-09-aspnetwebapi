@@ -49,9 +49,5 @@ namespace Notes.Domain.Models
             ForgotPasswordCode = null;
             ForgotPasswordCodeCreated = null;
         }
-        public void Test(params int[] numbers)
-        {
-
-        }
     }
 }
