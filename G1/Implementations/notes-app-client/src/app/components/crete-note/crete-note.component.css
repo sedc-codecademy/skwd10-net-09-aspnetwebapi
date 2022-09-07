@@ -1,0 +1,8 @@
+.create-note-card-custom {
+    width: 400px;
+    padding: 30px;
+}
+
+.create-note-card-custom > input {
+    margin-bottom: 10px;
+}

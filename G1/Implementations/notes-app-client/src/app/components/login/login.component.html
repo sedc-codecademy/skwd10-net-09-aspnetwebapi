@@ -1,1 +1,10 @@
-<p>login works!</p>
+<h1>Login</h1>
+
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+    <div class="card login-card-custom">
+        <input type="text" class="form-control me-2" formControlName="Username" placeholder="Username">
+        <input type="password" class="form-control me-2" formControlName="Password" placeholder="Password">
+    
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>

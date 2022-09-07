@@ -1,0 +1,8 @@
+.login-card-custom {
+    width: 400px;
+    padding: 30px;
+}
+
+.login-card-custom > input {
+    margin-bottom: 10px;
+}
