@@ -1,0 +1,35 @@
+2022-09-07 19:22:03.066 +02:00 [INF] User profile is available. Using 'C:\Users\gkabov\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-07 19:22:03.771 +02:00 [INF] Now listening on: http://localhost:5051
+2022-09-07 19:22:03.777 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-07 19:22:03.777 +02:00 [INF] Hosting environment: Development
+2022-09-07 19:22:03.777 +02:00 [INF] Content root path: C:\Users\gkabov\Desktop\Class13\SEDC.NotesApp_Latest\SEDC.NotesApp\
+2022-09-07 19:22:06.093 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger - -
+2022-09-07 19:22:07.252 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger - - - 301 0 - 1165.7708ms
+2022-09-07 19:22:07.512 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger/index.html - -
+2022-09-07 19:22:09.352 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger/swagger-ui-standalone-preset.js - -
+2022-09-07 19:22:09.352 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger/swagger-ui-bundle.js - -
+2022-09-07 19:22:09.355 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/_framework/aspnetcore-browser-refresh.js - -
+2022-09-07 19:22:09.368 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger/swagger-ui.css - -
+2022-09-07 19:22:09.398 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/_vs/browserLink - -
+2022-09-07 19:22:09.407 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 43.2125ms
+2022-09-07 19:22:09.407 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger/index.html - - - 200 - text/html;charset=utf-8 1890.2904ms
+2022-09-07 19:22:09.528 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2022-09-07 19:22:09.528 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-09-07 19:22:09.529 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 177.1241ms
+2022-09-07 19:22:09.529 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger/swagger-ui.css - - - 200 143632 text/css 160.3769ms
+2022-09-07 19:22:09.611 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-09-07 19:22:09.611 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 259.1010ms
+2022-09-07 19:22:10.180 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 782.3119ms
+2022-09-07 19:22:10.336 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger/v1/swagger.json - -
+2022-09-07 19:22:10.454 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5051/swagger/favicon-32x32.png - -
+2022-09-07 19:22:10.454 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2022-09-07 19:22:10.455 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger/favicon-32x32.png - - - 200 628 image/png 1.0000ms
+2022-09-07 19:22:11.260 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5051/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 924.2593ms
+2022-09-07 19:22:47.816 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5051/api/Users/register application/json 124
+2022-09-07 19:22:47.996 +02:00 [INF] Executing endpoint 'SEDC.NotesApp.Controllers.UsersController.Register (SEDC.NotesApp)'
+2022-09-07 19:22:48.024 +02:00 [INF] Route matched with {action = "Register", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register(SEDC.NotesApp.Dtos.Users.RegisterUserDto) on controller SEDC.NotesApp.Controllers.UsersController (SEDC.NotesApp).
+2022-09-07 19:22:49.618 +02:00 [ERR] There was error registering user because of the following error: Passwords must match!
+2022-09-07 19:22:49.636 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-07 19:22:49.644 +02:00 [INF] Executed action SEDC.NotesApp.Controllers.UsersController.Register (SEDC.NotesApp) in 1612.638ms
+2022-09-07 19:22:49.646 +02:00 [INF] Executed endpoint 'SEDC.NotesApp.Controllers.UsersController.Register (SEDC.NotesApp)'
+2022-09-07 19:22:49.651 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5051/api/Users/register application/json 124 - 400 - text/plain;+charset=utf-8 1835.6639ms
