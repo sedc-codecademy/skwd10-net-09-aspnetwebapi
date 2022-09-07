@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterModel } from 'src/app/models/auth.models';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent {
 
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService, 
+              private _router: Router) {}
 
   registerForm = new FormGroup({
     FirstName: new FormControl(),
@@ -35,9 +37,11 @@ export class RegisterComponent {
                                           confirmPasswordValue)
 
     this._authService.register(registerModel).subscribe({
-      next: data => {},
+      next: data => console.log(data),
       error: err => console.warn(err.error),
-      complete: () => console.log("register completed")
+      complete: () => {
+        this._router.navigate(["/login"])
+      }
     })                                   
   }
 

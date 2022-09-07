@@ -1,0 +1,12 @@
+<h1>Get Notes</h1>
+
+<div *ngIf="notes.length" class="card-container">
+    <div *ngFor="let noteFromParent of notes">
+        <note [note]="noteFromParent" (emitter)="refreshNotes()"></note>
+    </div>
+</div>
+
+<p *ngIf="!notes.length">Not available notes for this user!</p>
+
+
+

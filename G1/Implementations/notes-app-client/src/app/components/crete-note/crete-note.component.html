@@ -1,0 +1,11 @@
+<h1>Create Note</h1>
+
+<form [formGroup]="createNoteForm" (submit)="onSubmit()">
+    <div class="card create-note-card-custom">
+        <input type="text" class="form-control me-2" formControlName="Text" placeholder="Text">
+        <input type="text" class="form-control me-2" formControlName="Color" placeholder="Color">
+        <input type="text" class="form-control me-2" formControlName="TagType" placeholder="TagType">
+    
+        <button type="submit" class="btn btn-primary">Create Note</button>
+    </div>
+</form>

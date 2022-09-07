@@ -10,6 +10,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
+import { GetNotesComponent } from './components/get-notes/get-notes.component';
+import { NoteService } from './services/note.service';
+import { NoteComponent } from './components/note/note.component';
+import { CreteNoteComponent } from './components/crete-note/crete-note.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,10 @@ import { AuthService } from './services/auth.service';
     HomeComponent,
     NavComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    GetNotesComponent,
+    NoteComponent,
+    CreteNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +33,8 @@ import { AuthService } from './services/auth.service';
     HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    NoteService
   ],
   bootstrap: [AppComponent]
 })
