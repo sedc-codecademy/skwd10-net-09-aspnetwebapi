@@ -10,5 +10,7 @@ namespace MovieManager.Application.Services
     public interface IUserService
     {
         void Register(RegisterDto model);
+        TokenDto Autenticate(LoginDto login);
+        List<UserDto> GetUsers();
     }
 }

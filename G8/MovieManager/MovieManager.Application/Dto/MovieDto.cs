@@ -14,6 +14,5 @@ namespace MovieManager.Application.Dto
         public int Year { get; set; }
         public MovieGenre Genre { get; set; }
         public MovieRating Rating { get; set; }
-        public int UserId { get; set; }
     }
 }

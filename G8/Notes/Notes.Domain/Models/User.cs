@@ -1,13 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Notes.Domain.Models
 {
+    // Id
+    // [Entity]Id => UserId
     public class User
+        : IEntity
     {
+        public User()
+        {
+
+        }
         public User(string username, string password, string firstName, string lastName, string email)
         {
             Username = username;
@@ -16,7 +20,6 @@ namespace Notes.Domain.Models
             LastName = lastName;
             Email = email;
         }
-
         public int Id { get; set; }
 
         public string Username { get; set; } = string.Empty;
@@ -26,7 +29,7 @@ namespace Notes.Domain.Models
         public string FirstName { get; set; } = string.Empty;
 
         public string LastName { get; set; } = string.Empty;
-
+        
         public string? ForgotPasswordCode { get; private set; }
 
         public DateTime? ForgotPasswordCodeCreated { get; private set; }

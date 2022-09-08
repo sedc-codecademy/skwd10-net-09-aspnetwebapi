@@ -1,0 +1,147 @@
+2022-09-06 18:08:46.286 +02:00 [INF] User profile is available. Using 'C:\Users\Bojan\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-06 18:08:47.647 +02:00 [INF] Now listening on: https://localhost:7214
+2022-09-06 18:08:47.648 +02:00 [INF] Now listening on: http://localhost:5214
+2022-09-06 18:08:47.654 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-06 18:08:47.654 +02:00 [INF] Hosting environment: Development
+2022-09-06 18:08:47.654 +02:00 [INF] Content root path: C:\Users\Bojan\source\repos\skwd10-net-09-aspnetwebapi\G2\Class 13\NotesProject\NotesApi\
+2022-09-06 18:08:49.429 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7214/swagger/index.html - -
+2022-09-06 18:08:50.665 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7214/swagger/index.html - - - 200 - text/html;charset=utf-8 1240.1923ms
+2022-09-06 18:08:50.987 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7214/_framework/aspnetcore-browser-refresh.js - -
+2022-09-06 18:08:50.998 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7214/_framework/aspnetcore-browser-refresh.js - - - 200 11972 application/javascript;+charset=utf-8 10.8741ms
+2022-09-06 18:08:51.472 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7214/swagger/v1/swagger.json - -
+2022-09-06 18:08:51.554 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7214/swagger/favicon-32x32.png - -
+2022-09-06 18:08:51.576 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2022-09-06 18:08:51.576 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7214/swagger/favicon-32x32.png - - - 200 628 image/png 21.8922ms
+2022-09-06 18:08:51.887 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7214/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 415.0047ms
+2022-09-06 18:10:20.632 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7214/api/Users/register application/json 113
+2022-09-06 18:10:20.870 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.RegisterUser (NotesApi)'
+2022-09-06 18:10:20.909 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RegisterUser(Notes.Contracts.DTOs.UserDtos.RegisterUserDto) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:10:22.880 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-06 18:10:23.262 +02:00 [INF] User with username david has registered.
+2022-09-06 18:10:23.270 +02:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Contracts.DTOs.UserDtos.RegisterUserDto'.
+2022-09-06 18:10:23.295 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.RegisterUser (NotesApi) in 2371.4138ms
+2022-09-06 18:10:23.303 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.RegisterUser (NotesApi)'
+2022-09-06 18:10:23.325 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7214/api/Users/register application/json 113 - 200 - application/json;+charset=utf-8 2693.2078ms
+2022-09-06 18:10:23.343 +02:00 [ERR] An error occurred using the connection to database 'NotesAppDb' on server 'DESKTOP-5J221Q1\SQLEXPRESS'.
+2022-09-06 18:10:35.803 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7214/api/Users/login application/json 48
+2022-09-06 18:10:35.805 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.LoginUser (NotesApi)'
+2022-09-06 18:10:35.818 +02:00 [INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.String]] LoginUser(Notes.Contracts.DTOs.UserDtos.LoginUserDto) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:10:35.821 +02:00 [INF] User with username david has logged in.
+2022-09-06 18:10:35.877 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-06 18:10:36.904 +02:00 [INF] Executed DbCommand (139ms) [Parameters=[@__username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2022-09-06 18:10:37.086 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.LoginUser (NotesApi) in 1268.6067ms
+2022-09-06 18:10:37.089 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.LoginUser (NotesApi)'
+2022-09-06 18:10:37.096 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: User not found !!!
+   at Notes.Services.Services.UserService.LoginUser(LoginUserDto loginUserDto) in C:\Users\Bojan\source\repos\skwd10-net-09-aspnetwebapi\G2\Class 12\NotesProject\Notes.Services\Services\UserService.cs:line 59
+   at NotesApi.Controllers.UsersController.LoginUser(LoginUserDto loginUserDto) in C:\Users\Bojan\source\repos\skwd10-net-09-aspnetwebapi\G2\Class 13\NotesProject\NotesApi\Controllers\UsersController.cs:line 45
+   at lambda_method100(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-09-06 18:10:37.192 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7214/api/Users/login application/json 48 - 500 - text/plain;+charset=utf-8 1388.7602ms
+2022-09-06 18:11:11.851 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7214/api/Users/register application/json 113
+2022-09-06 18:11:11.865 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.RegisterUser (NotesApi)'
+2022-09-06 18:11:11.865 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RegisterUser(Notes.Contracts.DTOs.UserDtos.RegisterUserDto) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:11:26.676 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-06 18:11:28.832 +02:00 [INF] Executed DbCommand (2,038ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([FirstName], [LastName], [Password], [Role], [Username])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Users]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2022-09-06 18:11:28.851 +02:00 [INF] User with username david has registered.
+2022-09-06 18:11:31.563 +02:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Contracts.DTOs.UserDtos.RegisterUserDto'.
+2022-09-06 18:11:33.985 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.RegisterUser (NotesApi) in 22119.0743ms
+2022-09-06 18:11:33.985 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.RegisterUser (NotesApi)'
+2022-09-06 18:11:34.009 +02:00 [ERR] Connection id "0HMKG48ADP367", Request id "0HMKG48ADP367:0000000D": An unhandled exception was thrown by the application.
+System.InvalidOperationException: There is already an open DataReader associated with this Connection which must be closed first.
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.ValidateConnectionForExecute(SqlCommand command)
+   at Microsoft.Data.SqlClient.SqlInternalTransaction.Rollback()
+   at Microsoft.Data.SqlClient.SqlTransaction.Dispose(Boolean disposing)
+   at System.Data.Common.DbTransaction.DisposeAsync()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalTransaction.DisposeAsync()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.ResetStateAsync(Boolean disposeDbConnection)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|22_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.EntityFrameworkCore.DbContext.DisposeAsync()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|22_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.AspNetCore.Http.Features.RequestServicesFeature.<DisposeAsync>g__Awaited|9_0(RequestServicesFeature servicesFeature, ValueTask vt)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.<FireOnCompleted>g__ProcessEvents|227_0(HttpProtocol protocol, Stack`1 events)
+2022-09-06 18:11:34.017 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7214/api/Users/register application/json 113 - 200 - application/json;+charset=utf-8 22165.7462ms
+2022-09-06 18:12:02.435 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7214/api/Users/login application/json 48
+2022-09-06 18:12:02.435 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.LoginUser (NotesApi)'
+2022-09-06 18:12:02.436 +02:00 [INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.String]] LoginUser(Notes.Contracts.DTOs.UserDtos.LoginUserDto) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:12:08.404 +02:00 [INF] User with username david has logged in.
+2022-09-06 18:12:11.054 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-06 18:12:11.064 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2022-09-06 18:12:12.366 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2022-09-06 18:12:12.366 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.LoginUser (NotesApi) in 9930.4788ms
+2022-09-06 18:12:12.366 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.LoginUser (NotesApi)'
+2022-09-06 18:12:12.366 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7214/api/Users/login application/json 48 - 200 - text/plain;+charset=utf-8 9931.4366ms
+2022-09-06 18:14:16.032 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - -
+2022-09-06 18:14:17.203 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - - - 404 0 - 1171.5710ms
+2022-09-06 18:14:36.970 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - -
+2022-09-06 18:14:36.972 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - - - 404 0 - 1.4994ms
+2022-09-06 18:16:01.710 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - -
+2022-09-06 18:16:01.711 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - - - 404 0 - 1.1782ms
+2022-09-06 18:16:03.669 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - -
+2022-09-06 18:16:03.670 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - - - 404 0 - 0.3810ms
+2022-09-06 18:16:04.142 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - -
+2022-09-06 18:16:04.152 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/1 - - - 404 0 - 5.9676ms
+2022-09-06 18:16:08.894 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/0 - -
+2022-09-06 18:16:08.895 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/0 - - - 404 0 - 0.4765ms
+2022-09-06 18:16:12.889 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/User/notes/2 - -
+2022-09-06 18:16:12.889 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/User/notes/2 - - - 404 0 - 0.3776ms
+2022-09-06 18:16:30.847 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/Users/notes/2 - -
+2022-09-06 18:16:30.877 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.GetNote (NotesApi)'
+2022-09-06 18:16:30.886 +02:00 [INF] Route matched with {action = "GetNote", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Contracts.DTOs.NoteDto]] GetNote(Int32) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:16:30.889 +02:00 [INF] Note with ID 2 was successfully found.
+2022-09-06 18:16:30.892 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-06 18:16:30.911 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [n].[Id], [n].[Description], [n].[Name], [n].[UserId]
+FROM [Notes] AS [n]
+WHERE [n].[Id] = @__id_0
+2022-09-06 18:16:30.927 +02:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Contracts.DTOs.NoteDto'.
+2022-09-06 18:16:30.929 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.GetNote (NotesApi) in 42.7774ms
+2022-09-06 18:16:30.929 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.GetNote (NotesApi)'
+2022-09-06 18:16:30.934 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/Users/notes/2 - - - 200 - application/json;+charset=utf-8 87.1272ms
+2022-09-06 18:16:40.605 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/Users/notes/0 - -
+2022-09-06 18:16:40.607 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.GetNote (NotesApi)'
+2022-09-06 18:16:40.607 +02:00 [INF] Route matched with {action = "GetNote", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Contracts.DTOs.NoteDto]] GetNote(Int32) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:16:40.608 +02:00 [ERR] Please insert valid ID. This 0 is not valid.
+2022-09-06 18:16:40.617 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-09-06 18:16:40.623 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.GetNote (NotesApi) in 15.7101ms
+2022-09-06 18:16:40.623 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.GetNote (NotesApi)'
+2022-09-06 18:16:40.623 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/Users/notes/0 - - - 400 - application/problem+json;+charset=utf-8 17.9929ms
+2022-09-06 18:16:47.134 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7214/api/Users/notes/1 - -
+2022-09-06 18:16:47.136 +02:00 [INF] Executing endpoint 'NotesApi.Controllers.UsersController.GetNote (NotesApi)'
+2022-09-06 18:16:47.136 +02:00 [INF] Route matched with {action = "GetNote", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Contracts.DTOs.NoteDto]] GetNote(Int32) on controller NotesApi.Controllers.UsersController (NotesApi).
+2022-09-06 18:16:47.137 +02:00 [INF] Note with ID 1 was successfully found.
+2022-09-06 18:16:47.138 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-06 18:16:47.158 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [n].[Id], [n].[Description], [n].[Name], [n].[UserId]
+FROM [Notes] AS [n]
+WHERE [n].[Id] = @__id_0
+2022-09-06 18:16:47.172 +02:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Contracts.DTOs.NoteDto'.
+2022-09-06 18:16:47.172 +02:00 [INF] Executed action NotesApi.Controllers.UsersController.GetNote (NotesApi) in 35.9418ms
+2022-09-06 18:16:47.172 +02:00 [INF] Executed endpoint 'NotesApi.Controllers.UsersController.GetNote (NotesApi)'
+2022-09-06 18:16:47.172 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7214/api/Users/notes/1 - - - 200 - application/json;+charset=utf-8 38.4191ms

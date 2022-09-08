@@ -9,7 +9,7 @@ namespace MovieManager.Application.Repositories
     public interface IRepository<T>
     {
         T? GetById(int id);
-        IList<T> GetAll();
+        IQueryable<T> Query();
         T Create(T entity);
         T Update(T entity);
         T Delete(T entity);

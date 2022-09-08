@@ -19,9 +19,9 @@ namespace Notes.Infrastracture.Repositories
             return entity;
         }
 
-        public List<User> GetAll()
+        public IQueryable<User> GetAll()
         {
-            return NotesStaticDb.User.ToList();
+            return NotesStaticDb.User.AsQueryable();
         }
 
         public User? GetById(int id)

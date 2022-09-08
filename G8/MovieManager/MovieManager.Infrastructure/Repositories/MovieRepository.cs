@@ -15,6 +15,8 @@ namespace MovieManager.Infrastructure.Repositories
             var id = MovieManagerStaticDb.Movies.LastOrDefault()?.Id ?? 0;
             entity.Id = ++id;
 
+            entity.User.Movies.Add(entity);
+
             MovieManagerStaticDb.Movies.Add(entity);
             return entity;
         }
@@ -33,6 +35,11 @@ namespace MovieManager.Infrastructure.Repositories
         public Movie? GetById(int id)
         {
             return MovieManagerStaticDb.Movies.FirstOrDefault(x => x.Id == id);
+        }
+
+        public IQueryable<Movie> Query()
+        {
+            throw new NotImplementedException();
         }
 
         public Movie Update(Movie entity)

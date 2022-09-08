@@ -25,9 +25,9 @@ namespace Notes.Infrastracture.Repositories
             return entity;
         }
 
-        public List<Note> GetAll()
+        public IQueryable<Note> GetAll()
         {
-            return NotesStaticDb.Notes.ToList();
+            return NotesStaticDb.Notes.AsQueryable();
         }
 
         public Note Update(Note entity)

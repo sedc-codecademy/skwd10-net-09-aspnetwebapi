@@ -1,0 +1,14 @@
+<h1>Register</h1>
+
+<form [formGroup]="registerForm" (submit)="onSubmit()">
+    <div class="card register-card-custom">
+
+        <input type="text" class="form-control me-2" placeholder="First Name" formControlName="FirstName" >
+        <input type="text" class="form-control me-2" placeholder="Last Name" formControlName="LastName" >
+        <input type="text" class="form-control me-2" placeholder="Username" formControlName="Username" >
+        <input type="password" class="form-control me-2" placeholder="Password" formControlName="Password" >
+        <input type="password" class="form-control me-2" placeholder="Confirm Password" formControlName="ConfirmPassword" >
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form>

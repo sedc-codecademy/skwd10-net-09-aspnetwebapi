@@ -35,14 +35,20 @@ namespace Notes.Application.Services.Implementation
 
         public IEnumerable<UserModel> GetUsers()
         {
-            return repository.GetAll().Select(x => x.ToModel()).ToList(); 
+            // LINQ 
+            IEnumerable<UserModel> result = repository.GetAll()
+                .Where(x => x.ForgotPasswordCode != null)
+                .OrderBy(x => x.Username)
+                .ToList()
+                .Select(x => x.ToModel());
+
+            return result.ToList();
         }
 
         public UserModel CreateUser(CreateUserModel model)
         {
             var password = passwordHasher.HashPassword(model.Password);
             var user = new User(model.UserName, password, model.Name, model.LastName, model.Email);
-
             repository.Create(user);
             return user.ToModel();
         }
@@ -55,13 +61,16 @@ namespace Notes.Application.Services.Implementation
             }
 
             var user = repository.GetById(id) ?? throw new NotFoundException("User doesn't exist");
+
             if(user.Password != passwordHasher.HashPassword(model.OldPassword))
             {
                 throw new ValidationException("Old password is wrong");
             }
+
             user.Password = passwordHasher.HashPassword(model.Password);
             repository.Update(user);
         }
+
         //url https://localhost:[port]
         public void ForgotPassword(ForgotPasswordModel model, string url)
         {
@@ -87,6 +96,37 @@ namespace Notes.Application.Services.Implementation
             {
                 throw new NotFoundException("User doesn't exist");
             }
+            return user.ToModel();
+        }
+
+        public void UpdatePasswordByCode(UpdatePasswordModel model, string code)
+        {
+            var id = hashids.DecodeSingle(code);
+            if(model.Id != id)
+            {
+                throw new ValidationException();
+            }
+            var user = repository.GetById(id);
+            if (user == null)
+            {
+                throw new NotFoundException("User doesn't exist");
+            }
+            user.ClearForgotPasswordCode();
+            user.Password = passwordHasher.HashPassword(model.Password);
+            repository.Update(user);
+        }
+
+        public UserModel PasswordLogin(UserLoginModel model)
+        {
+            var user = repository.GetAll()
+                .FirstOrDefault(x => x.Username == model.UsernameOrEmail || x.Email == model.UsernameOrEmail) ??
+                throw new Exception("Auth Excetion");
+
+            if(user.Password != passwordHasher.HashPassword(model.Password))
+            {
+                throw new Exception("Auth Excetion");
+            }
+
             return user.ToModel();
         }
     }

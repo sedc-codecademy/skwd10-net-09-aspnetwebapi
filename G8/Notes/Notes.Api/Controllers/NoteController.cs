@@ -1,11 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Notes.Application;
 using Notes.Application.Exceptions;
 using Notes.Application.Models;
 using Notes.Application.Services;
+using System.Security.Claims;
 
 namespace Notes.Api.Controllers
 {
+    // post- za kreiranje
+    // put - za menuvanje na celiot model
+    // patch - koga sakame da smenime direktva nekoe prop - retko se koristi
+    // post za povikuvanje metodi 
+    [Authorize(Policy = SystemPolicies.MustHaveId)]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class NoteController : ControllerBase
@@ -24,7 +32,7 @@ namespace Notes.Api.Controllers
             {
                 return Ok(service.GetNote(id));
             }
-            catch(NotFoundException)
+            catch (NotFoundException)
             {
                 return NotFound();
             }
@@ -36,11 +44,12 @@ namespace Notes.Api.Controllers
         {
             return Ok(service.GetNotes());
         }
-
-        [HttpPost]
+        // var url = 'https://localhost:7323/api/v1/note/by-super-admin/create?userId=[0-9]+' 
+        // ?userId=1&noteId=1&tag=asdads&color=asdasd
+        [HttpPost("by-super-admin")]// ?userId=[0-9]+
         public ActionResult<NoteModel> CreateNote([FromBody] CreateNoteModel model, [FromQuery] int? userId)
         {
-            if(userId == null)
+            if (userId == null)
             {
                 return Unauthorized(); // 401
             }
@@ -49,44 +58,31 @@ namespace Notes.Api.Controllers
             {
                 return BadRequest(ModelState); // 400
             }
-            try
-            {
-                var noteModel = service.CreateNote(model, userId.Value);
-                return Created($"api/v1/note/{noteModel.Id}", noteModel); // 201
-            }
-            catch (NotFoundException)
-            {
-                return NotFound(); //404
-            }
+
+            var noteModel = service.CreateNote(model, userId.Value);
+            return Created($"api/v1/note/{noteModel.Id}", noteModel); // 201
+
         }
         //note/{123123123}
-        [HttpPut("{id:int}")] 
-        public ActionResult<EditNoteModel> EditNote([FromBody] EditNoteModel model, int id, int? userId)
+        [HttpPut("{id:int}")]
+        public ActionResult<EditNoteModel> EditNote([FromBody] EditNoteModel model, int id)
         {
-            if (!userId.HasValue)
+            var userIdString = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)!.Value;
+
+            if (!int.TryParse(userIdString, out int userId))
             {
-                return Unauthorized();
+                throw new Exception("");
             }
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(model);
             }
-            try
-            {
-                var note = service.EditNote(model, id, userId.Value);
-                return Ok(note);
-                //return StatusCode(StatusCodes.Status200OK, note);
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
-            catch (ExecutionNotAllowedException)
-            {
-                //return StatusCode(StatusCodes.Status403Forbidden, new object);
-                return Forbid();
-            }
+
+            var note = service.EditNote(model, id, userId);
+            return Ok(note);
+            //return StatusCode(StatusCodes.Status200OK, note);
+
         }
 
         // DeleteNote -> params id & userId?
@@ -98,20 +94,9 @@ namespace Notes.Api.Controllers
             {
                 return Unauthorized();
             }
-            try
-            {
-                service.Delete(id, userId.Value);
-                return Ok();
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
-            catch (ExecutionNotAllowedException)
-            {
-                return Forbid();
-            }
 
+            service.Delete(id, userId.Value);
+            return Ok();
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Notes.Application.Mapper
             {
                 Id = note.Id,
                 Color = note.Color,
-                Tag = note.Tag,
+                Tag = string.Join(',' ,note.Tags.Select(x => x.Value)),
                 Text = note.Text,
-                UserName = note.User.Username
+                UserName = "note.User.Username"
             };
         } 
 

@@ -83,16 +83,18 @@ namespace SEDC.WebApi.Class03.NotesApi.Controllers
         }
         [HttpGet("user/{userId}/notesForUser")]
         public ActionResult<IEnumerable<Note>> GetNotesForLoggedUser(
-            [FromRoute]int userId, [FromHeader]int? authenticatedUser)
+            [FromRoute]int userId)
         {
-            if(authenticatedUser is null)
-            {
-                return Unauthorized();
-            }
-            if(authenticatedUser != userId)
-            {
-                return StatusCode(403,"you cant acces notes for this user");
-            }
+
+            var authenticatedUser = Request.Headers["authenticatedUser"].ToString();
+            //if (authenticatedUser is null)
+            //{
+            //    return Unauthorized();
+            //}
+            //if(authenticatedUser != userId)
+            //{
+            //    return StatusCode(403,"you cant acces notes for this user");
+            //}
             return Ok(_notes.Where(x => x.UserId == userId));
         }
 

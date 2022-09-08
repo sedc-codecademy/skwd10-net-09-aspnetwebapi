@@ -9,6 +9,6 @@ namespace Notes.Application.Models
     public class EditNoteModel
         : CreateNoteModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }
