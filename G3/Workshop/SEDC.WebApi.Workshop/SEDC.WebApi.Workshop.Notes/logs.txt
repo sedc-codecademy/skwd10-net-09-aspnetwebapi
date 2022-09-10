@@ -1,0 +1,3 @@
+9/10/2022 7:46:27 AM [ERR] An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call. 
+9/10/2022 7:48:52 AM [INF] User created with username tvlatko 
+9/10/2022 7:49:09 AM [DBG] User validation ended in 38 

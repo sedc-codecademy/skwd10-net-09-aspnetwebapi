@@ -1,0 +1,53 @@
+2022-09-10 10:20:42.510 +02:00 [INF] User profile is available. Using 'C:\Users\vlatk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-10 10:20:42.864 +02:00 [INF] Now listening on: http://localhost:5277
+2022-09-10 10:20:42.868 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-10 10:20:42.868 +02:00 [INF] Hosting environment: Development
+2022-09-10 10:20:42.868 +02:00 [INF] Content root path: C:\Users\vlatk\OneDrive\Desktop\Vlatko\Seavus\skwd10-net-09-aspnetwebapi\G3\Workshop\SEDC.WebApi.Workshop\SEDC.WebApi.Workshop.Notes\
+2022-09-10 10:20:44.354 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/index.html - -
+2022-09-10 10:20:45.202 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/index.html - - - 200 - text/html;charset=utf-8 862.0685ms
+2022-09-10 10:20:45.326 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - -
+2022-09-10 10:20:45.335 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - - - 200 11960 application/javascript;+charset=utf-8 9.0964ms
+2022-09-10 10:20:45.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - -
+2022-09-10 10:20:46.099 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 442.1161ms
+2022-09-10 10:22:34.116 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/Users/register application/json 93
+2022-09-10 10:22:34.281 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.RegisterUser (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 10:22:34.320 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult RegisterUser(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.RegisterUser) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-10 10:22:35.800 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-10 10:22:37.818 +02:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-10 10:22:38.025 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 50), @p1='?' (Size = 50), @p2='?' (Size = 500), @p3='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [User] ([FirstName], [LastName], [Password], [Username])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [Id]
+FROM [User]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2022-09-10 10:22:38.063 +02:00 [INF] User created with username test
+2022-09-10 10:22:38.068 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 201
+2022-09-10 10:22:38.071 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.RegisterUser (SEDC.WebApi.Workshop.Notes) in 3746.8721ms
+2022-09-10 10:22:38.072 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.RegisterUser (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 10:22:38.075 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/register application/json 93 - 201 0 - 3959.6803ms
+2022-09-10 10:22:48.270 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 54
+2022-09-10 10:22:48.272 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 10:22:48.274 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-10 10:22:48.282 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-10 10:22:48.290 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-10 10:22:48.291 +02:00 [WRN] User test tried to log in with wrong password
+2022-09-10 10:22:48.389 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-10 10:22:48.390 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 115.833ms
+2022-09-10 10:22:48.390 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 10:22:48.390 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 54 - 400 - text/plain;+charset=utf-8 120.3417ms
+2022-09-10 10:22:53.592 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 48
+2022-09-10 10:22:53.604 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 10:22:53.605 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-10 10:22:53.675 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-10 10:22:53.677 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-10 10:22:53.878 +02:00 [INF] Executing OkObjectResult, writing value of type 'SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto'.
+2022-09-10 10:22:53.881 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 275.9655ms
+2022-09-10 10:22:53.881 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 10:22:53.881 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 48 - 200 - application/json;+charset=utf-8 288.5982ms

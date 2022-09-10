@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SEDC.WebApi.Workshop.Notes.Common.Models;
 using SEDC.WebApi.Workshop.Notes.DependencyInjection;
+using Serilog;
 using System.Text;
 
 namespace SEDC.WebApi.Workshop.Notes
@@ -15,6 +16,10 @@ namespace SEDC.WebApi.Workshop.Notes
 
             // Add services to the container.
             builder.Services.AddAuthorization();
+
+            //Logs Everything
+            builder.Host.UseSerilog((ctx, lc) => lc
+                .WriteTo.File("SeriLogs.txt"));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

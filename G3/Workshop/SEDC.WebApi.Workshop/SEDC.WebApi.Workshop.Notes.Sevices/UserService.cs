@@ -10,6 +10,9 @@ using SEDC.WebApi.Workshop.Notes.Common.Models;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using SEDC.WebApi.Workshop.Notes.Common.Helpers;
+using System.Diagnostics;
+using Serilog;
 
 namespace SEDC.WebApi.Workshop.Notes.Sevices
 {
@@ -27,10 +30,21 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
 
         public void Register(RegisterUser request)
         {
-            var user = _userRepository
+            User user = null;
+            try
+            {
+                 user = _userRepository
                 .GetAll()
                 .FirstOrDefault(u => u.Username.Equals(request.Username,
                         StringComparison.InvariantCultureIgnoreCase));
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                throw new Exception("Error connecting to Database");
+            }
+
 
             if(user != null)
             {
@@ -50,11 +64,23 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
                 Password = HashPassword(request.Password)
             };
 
-            _userRepository.Insert(newUser);
+            try
+            {
+                _userRepository.Insert(newUser);
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                throw new Exception("Error connecting to Database");
+            }
+            Log.Information($"User created with username {request.Username}");
         }
 
         public UserLoginDto Login(LoginModel request)
         {
+            var sw = new Stopwatch();
+            sw.Start();
             var user = _userRepository
                 .GetAll()
                 .FirstOrDefault(u => u.Username.Equals(request.Username,
@@ -68,8 +94,11 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             var hashedPassword = HashPassword(request.Password);
             if(user.Password != hashedPassword)
             {
+                Log.Warning($"User {request.Username} tried to log in with wrong password");
                 throw new Exception("Password is not valid");
             }
+            sw.Stop();
+            Log.Debug($"User validation ended in {sw.ElapsedMilliseconds}");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secret);
