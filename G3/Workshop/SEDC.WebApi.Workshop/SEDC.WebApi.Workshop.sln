@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.WebApi.Workshop.Notes.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.WebApi.Workshop.Notes.DependencyInjection", "SEDC.WebApi.Workshop.Notes.DependencyInjection\SEDC.WebApi.Workshop.Notes.DependencyInjection.csproj", "{73C7A574-CDFE-4370-BD3B-484546E73075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.WebApi.Workshop.Notes.Tests", "SEDC.WebApi.Workshop.Notes.Tests\SEDC.WebApi.Workshop.Notes.Tests.csproj", "{35173693-0824-4968-AF34-B0ACB1F6EAE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.WebApi.Workshop.Notes.Tests", "SEDC.WebApi.Workshop.Notes.Tests\SEDC.WebApi.Workshop.Notes.Tests.csproj", "{35173693-0824-4968-AF34-B0ACB1F6EAE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.WebApi.Workshop.PerformanceChecker", "SEDC.WebApi.Workshop.PerformanceChecker\SEDC.WebApi.Workshop.PerformanceChecker.csproj", "{E8CCEBE1-D394-40EF-81C1-081812083E93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{35173693-0824-4968-AF34-B0ACB1F6EAE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35173693-0824-4968-AF34-B0ACB1F6EAE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35173693-0824-4968-AF34-B0ACB1F6EAE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CCEBE1-D394-40EF-81C1-081812083E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CCEBE1-D394-40EF-81C1-081812083E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CCEBE1-D394-40EF-81C1-081812083E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CCEBE1-D394-40EF-81C1-081812083E93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -51,3 +51,50 @@ FROM [User] AS [u]
 2022-09-10 10:22:53.881 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 275.9655ms
 2022-09-10 10:22:53.881 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
 2022-09-10 10:22:53.881 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 48 - 200 - application/json;+charset=utf-8 288.5982ms
+2022-09-10 11:02:51.552 +02:00 [INF] User profile is available. Using 'C:\Users\tstevkovski\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-10 11:02:51.878 +02:00 [INF] Now listening on: http://localhost:5277
+2022-09-10 11:02:51.881 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-10 11:02:51.881 +02:00 [INF] Hosting environment: Development
+2022-09-10 11:02:51.881 +02:00 [INF] Content root path: C:\Sedc\WebApi\skwd10-net-09-aspnetwebapi\G3\Workshop\SEDC.WebApi.Workshop\SEDC.WebApi.Workshop.Notes\
+2022-09-10 11:02:52.787 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/index.html - -
+2022-09-10 11:02:53.177 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_vs/browserLink - -
+2022-09-10 11:02:53.177 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - -
+2022-09-10 11:02:53.213 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - - - 200 12022 application/javascript;+charset=utf-8 18.2147ms
+2022-09-10 11:02:53.213 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/index.html - - - 200 - text/html;charset=utf-8 432.3607ms
+2022-09-10 11:02:53.312 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 134.8599ms
+2022-09-10 11:02:53.370 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - -
+2022-09-10 11:02:53.504 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 133.6087ms
+2022-09-10 11:03:46.936 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/api/v1/performance/notes - -
+2022-09-10 11:03:47.470 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 11:03:47.482 +02:00 [INF] Route matched with {action = "GetNotesPerformance", controller = "Performance"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Int64] GetNotesPerformance() on controller SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController (SEDC.WebApi.Workshop.Notes).
+2022-09-10 11:03:49.323 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Int64'.
+2022-09-10 11:03:49.329 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes) in 1843.3162ms
+2022-09-10 11:03:49.330 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 11:03:49.333 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/api/v1/performance/notes - - - 200 - application/json;+charset=utf-8 2398.1663ms
+2022-09-10 11:04:29.870 +02:00 [INF] User profile is available. Using 'C:\Users\tstevkovski\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-10 11:04:30.017 +02:00 [INF] Now listening on: http://localhost:5277
+2022-09-10 11:04:30.019 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-10 11:04:30.019 +02:00 [INF] Hosting environment: Development
+2022-09-10 11:04:30.019 +02:00 [INF] Content root path: C:\Sedc\WebApi\skwd10-net-09-aspnetwebapi\G3\Workshop\SEDC.WebApi.Workshop\SEDC.WebApi.Workshop.Notes\
+2022-09-10 11:04:30.589 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/index.html - -
+2022-09-10 11:04:31.036 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - -
+2022-09-10 11:04:31.036 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_vs/browserLink - -
+2022-09-10 11:04:31.058 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - - - 200 12022 application/javascript;+charset=utf-8 8.8868ms
+2022-09-10 11:04:31.068 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/index.html - - - 200 - text/html;charset=utf-8 477.6244ms
+2022-09-10 11:04:31.092 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 56.5120ms
+2022-09-10 11:04:31.225 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - -
+2022-09-10 11:04:31.361 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 135.7082ms
+2022-09-10 11:04:42.658 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/api/v1/performance/notes - -
+2022-09-10 11:04:42.733 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 11:04:42.740 +02:00 [INF] Route matched with {action = "GetNotesPerformance", controller = "Performance"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Int64] GetNotesPerformance() on controller SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController (SEDC.WebApi.Workshop.Notes).
+2022-09-10 11:04:44.006 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Int64'.
+2022-09-10 11:04:44.011 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes) in 1267.0159ms
+2022-09-10 11:04:44.012 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 11:04:44.014 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/api/v1/performance/notes - - - 200 - application/json;+charset=utf-8 1356.0669ms
+2022-09-10 11:05:09.796 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/api/v1/performance/notes - -
+2022-09-10 11:05:09.803 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 11:05:09.804 +02:00 [INF] Route matched with {action = "GetNotesPerformance", controller = "Performance"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Int64] GetNotesPerformance() on controller SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController (SEDC.WebApi.Workshop.Notes).
+2022-09-10 11:05:10.703 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Int64'.
+2022-09-10 11:05:10.703 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes) in 896.6744ms
+2022-09-10 11:05:10.703 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.PerformanceController.GetNotesPerformance (SEDC.WebApi.Workshop.Notes)'
+2022-09-10 11:05:10.703 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/api/v1/performance/notes - - - 200 - application/json;+charset=utf-8 906.6093ms
