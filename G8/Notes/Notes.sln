@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Infrastracture", "Not
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Application", "Notes.Application\Notes.Application.csproj", "{198AB1CF-161A-483B-BF26-F2D1438BF3EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.UnitTests", "Notes.UnitTests\Notes.UnitTests.csproj", "{1D626FE2-7182-4E95-AC67-B433D4BAF8FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.UnitTests", "Notes.UnitTests\Notes.UnitTests.csproj", "{1D626FE2-7182-4E95-AC67-B433D4BAF8FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.DataProvider.API", "Notes.DataProvider.API\Notes.DataProvider.API.csproj", "{0C35BC99-1E33-4827-B9D5-34F375AF208B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1D626FE2-7182-4E95-AC67-B433D4BAF8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D626FE2-7182-4E95-AC67-B433D4BAF8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D626FE2-7182-4E95-AC67-B433D4BAF8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C35BC99-1E33-4827-B9D5-34F375AF208B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C35BC99-1E33-4827-B9D5-34F375AF208B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C35BC99-1E33-4827-B9D5-34F375AF208B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C35BC99-1E33-4827-B9D5-34F375AF208B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

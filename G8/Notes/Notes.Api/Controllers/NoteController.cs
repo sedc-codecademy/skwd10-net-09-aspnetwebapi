@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Notes.Application;
 using Notes.Application.Exceptions;
 using Notes.Application.Models;
+using Notes.Application.Models.External;
 using Notes.Application.Services;
 using System.Security.Claims;
 
@@ -19,21 +20,28 @@ namespace Notes.Api.Controllers
     public class NoteController : ControllerBase
     {
         private readonly INoteService service;
+        private readonly Serilog.ILogger logger;
 
-        public NoteController(INoteService service)
+        public NoteController(INoteService service, Serilog.ILogger logger)
         {
             this.service = service;
+            this.logger = logger;
+            logger.Debug("");
+            logger.Information("");
+            logger.Warning("");
+            logger.Error("");
         }
         //api/v1/note/1
         [HttpGet("{id:int}")]
-        public ActionResult<NoteModel> GetNote(int id)
+        public ActionResult<NoteModel> GetNote(int id, CancellationToken token)
         {
             try
             {
                 return Ok(service.GetNote(id));
             }
-            catch (NotFoundException)
+            catch (NotFoundException ex)
             {
+                logger.Warning($"Note was not found id {id} for user {new ClaimsPrinicipalWrapper(User).Id}", ex);
                 return NotFound();
             }
         }

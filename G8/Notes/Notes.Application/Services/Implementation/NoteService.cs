@@ -20,11 +20,7 @@ namespace Notes.Application.Services.Implementation
 
         public NoteModel CreateNote(CreateNoteModel model, int userId)
         {
-            var user = userRepository.GetById(userId);
-            if(user == null)
-            {
-                throw new NotFoundException("User doesn't exist");
-            }
+            var user = userRepository.GetById(userId) ?? throw new NotFoundException("User doesn't exist");
 
             var note = new Note(model.Text, model.Color, user)
             {
