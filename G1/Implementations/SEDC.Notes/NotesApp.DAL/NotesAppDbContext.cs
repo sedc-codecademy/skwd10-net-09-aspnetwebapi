@@ -18,7 +18,12 @@ namespace NotesApp.DAL
     //Microsoft.EntityFrameworkCore.Tools
     public class NotesAppDbContext : DbContext
     {
-        public NotesAppDbContext(DbContextOptions options) : base(options) {}
+        private readonly IStringHasher hasher;
+
+        public NotesAppDbContext(DbContextOptions options, IStringHasher hasher) : base(options)
+        {
+            this.hasher = hasher;
+        }
 
         public DbSet<UserDto> Users { get; set; }
         public DbSet<NoteDto> Notes { get; set; }
@@ -41,7 +46,7 @@ namespace NotesApp.DAL
                         FirstName = "Viktor",
                         LastName = "Jakovlev",
                         Username = "vjakovlev",
-                        Password = StringHasher.HashGenerator("P@ssw0rd")
+                        Password = hasher.HashGenerator("P@ssw0rd")
                     });
 
             modelBuilder.Entity<NoteDto>()

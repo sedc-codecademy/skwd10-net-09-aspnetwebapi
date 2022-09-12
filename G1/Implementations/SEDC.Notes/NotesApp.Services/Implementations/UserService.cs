@@ -1,17 +1,7 @@
 ﻿using NotesApp.DAL;
-using NotesApp.DAL.Repositories;
 using NotesApp.DataModels;
 using NotesApp.Mapper;
 using NotesApp.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using NotesApp.Helpers;
 using NotesApp.Configurations;
 using Microsoft.Extensions.Options;
@@ -25,45 +15,34 @@ namespace NotesApp.Services.Implementations
     public class UserService : IUserService
     {
         private readonly IRepository<UserDto> _userRepository;
+        private readonly IStringHasher hasher;
+        private readonly ISecurityHandler handler;
         private readonly AppSettings _appSettings;
 
         public UserService(IRepository<UserDto> userRepository, 
-                           IOptions<AppSettings> options)
+                           IOptions<AppSettings> options,
+                           IStringHasher hasher,
+                           ISecurityHandler handler)
         {
             _userRepository = userRepository;
+            this.hasher = hasher;
+            this.handler = handler;
             _appSettings = options.Value;
         }
 
         public UserModel Authenticate(string username, string password)
         {
+            var hashedPassword = hasher.HashGenerator(password);
 
-            var hashedPassword = StringHasher.HashGenerator(password);
-
-            var user = _userRepository.GetAll().SingleOrDefault(user => 
+            var user = _userRepository.GetAll().SingleOrDefault(user =>
                 user.Username == username && user.Password == hashedPassword);
 
-            if (user == null) 
+            if (user == null)
             {
                 throw new UserException(null, null, "This user does not exists in the database!");
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-
-            var tokenDescriptior = new SecurityTokenDescriptor()
-            {
-                Subject = new System.Security.Claims.ClaimsIdentity(
-                    new[] 
-                    {
-                        new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                    }               
-                ),
-                Expires = DateTime.UtcNow.AddDays(3),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptior);
+            string token = handler.GenerateSecurityToken(user);
 
             return new UserModel()
             {
@@ -71,9 +50,11 @@ namespace NotesApp.Services.Implementations
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Username = user.Username,
-                Token = tokenHandler.WriteToken(token)
+                Token = token
             };
         }
+
+
 
         public void Register(RegisterModel model) 
         {
@@ -109,7 +90,7 @@ namespace NotesApp.Services.Implementations
                 throw new UserException(null, model.Username, "Password did not match!");
             }
 
-            var hashedPassword = StringHasher.HashGenerator(model.Password);
+            var hashedPassword = hasher.HashGenerator(model.Password);
 
             var user = new UserDto
             {

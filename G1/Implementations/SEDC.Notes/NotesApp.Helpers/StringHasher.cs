@@ -7,9 +7,9 @@ using System.Security.Cryptography;
 
 namespace NotesApp.Helpers
 {
-    public static class StringHasher
+    public class StringHasher : IStringHasher
     {
-        public static string HashGenerator(string input)
+        public string HashGenerator(string input)
         {
             var md5 = new MD5CryptoServiceProvider();
             var md5Data = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
