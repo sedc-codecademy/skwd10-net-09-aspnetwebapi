@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Serilog" Version="2.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SEDC.WebApi.Workshop.Notes.DataModels\SEDC.WebApi.Workshop.Notes.DataModels.csproj" />
     <ProjectReference Include="..\SEDC.WebApi.Workshop.Notes.ServiceModels\SEDC.WebApi.Workshop.Notes.ServiceModels.csproj" />
   </ItemGroup>

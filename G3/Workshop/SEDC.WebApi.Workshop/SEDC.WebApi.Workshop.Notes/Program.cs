@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SEDC.WebApi.Workshop.Notes.Common.Middleware;
 using SEDC.WebApi.Workshop.Notes.Common.Models;
 using SEDC.WebApi.Workshop.Notes.DependencyInjection;
 using Serilog;
@@ -101,6 +102,8 @@ namespace SEDC.WebApi.Workshop.Notes
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.Run();
         }
