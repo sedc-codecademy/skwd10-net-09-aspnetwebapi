@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SEDC.WebApi.Workshop.Notes.Common.Exceptions;
 using SEDC.WebApi.Workshop.Notes.ServiceModels.NotesModels;
 using SEDC.WebApi.Workshop.Notes.Sevices.Interfaces;
+using Serilog;
 using System.Security.Claims;
 
 namespace SEDC.WebApi.Workshop.Notes.Controllers
@@ -25,9 +27,17 @@ namespace SEDC.WebApi.Workshop.Notes.Controllers
                 var notes = _noteService.GetUserNotes(UserId);
                 return Ok(notes);
             }
+            catch (UserException ex)
+            {
+                Log.Error("USER {userId}.{name}: {message}",
+                    ex.UserId, ex.Name, ex.Message);
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                Log.Error(ex.Message);
+                return StatusCode(StatusCodes.Status400BadRequest,
+                    "Something went wrong. Please contact support!");
             }
         }
 

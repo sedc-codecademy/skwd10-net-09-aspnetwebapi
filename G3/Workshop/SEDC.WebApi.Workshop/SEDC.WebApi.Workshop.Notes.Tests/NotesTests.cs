@@ -1,4 +1,5 @@
-﻿using SEDC.WebApi.Workshop.Notes.DataAccess;
+﻿using SEDC.WebApi.Workshop.Notes.Common.Exceptions;
+using SEDC.WebApi.Workshop.Notes.DataAccess;
 using SEDC.WebApi.Workshop.Notes.DataModels.Models;
 using SEDC.WebApi.Workshop.Notes.Sevices;
 
@@ -59,10 +60,12 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
 
             // Act
             // Assert
-            Assert.ThrowsException<Exception>(() =>
+            Assert.ThrowsException<NoteException>(() =>
             {
                 service.GetNote(noteId, userId);
             });
+
+            // TODO:
         }
 
         [TestMethod]
@@ -111,7 +114,7 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
 
             // Act
             // Assert
-            var response = Assert.ThrowsException<Exception>(() =>
+            var response = Assert.ThrowsException<NoteException>(() =>
             {
                 service.DeleteNote(noteId, userId);
             });
@@ -179,7 +182,7 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
             // Act
             // Assert
 
-            var ex = Assert.ThrowsException<Exception>(() =>
+            var ex = Assert.ThrowsException<UserException>(() =>
             {
                 service.AddNote(request, userId);
             });
