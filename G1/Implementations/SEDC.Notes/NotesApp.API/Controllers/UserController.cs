@@ -24,59 +24,27 @@ namespace NotesApp.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate([FromBody] LoginModel model) 
+        public IActionResult Authenticate([FromBody] LoginModel model)
         {
-            try
-            {
-                var response = _userService.Authenticate(model.Username, model.Password);
-                Log.Information($"User {response.FirstName} {response.LastName} has been succesfully authenticate.");
-                return Ok(response);
-            }
-            catch (UserException ex)
-            {
-                Log.Error("USER {userId}.{name}: {message}", ex.UserId, ex.Name, ex.Message);
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Log.Write(LogEventLevel.Fatal, ex.Message);
-                return BadRequest("Something went wrong. Please contact customer support.");
-            }
+            var response = _userService.Authenticate(model.Username, model.Password);
+            Log.Information($"User {response.FirstName} {response.LastName} has been succesfully authenticate.");
+            return Ok(response);
         }
 
         [AllowAnonymous]
         [HttpPost("Register")]
-        public IActionResult Register([FromBody] RegisterModel model) 
+        public IActionResult Register([FromBody] RegisterModel model)
         {
-            try
-            {
-                _userService.Register(model);
-                Log.Information($"User {model.FirstName} {model.LastName} has been succesfully registered.");
-                return Ok("User successfully registered.");
-            }
-            catch (UserException ex)
-            {
-                Log.Error("USER {userId}.{name}: {message}", ex.UserId, ex.Name, ex.Message);
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Log.Write(LogEventLevel.Fatal, ex.Message);
-                return BadRequest("Something went wrong. Please contact customer support.");
-            }
+
+            _userService.Register(model);
+            Log.Information($"User {model.FirstName} {model.LastName} has been succesfully registered.");
+            return Ok("User successfully registered.");
         }
 
         [HttpGet("GetAllUsers")]
-        public IActionResult GetAllRegisteredUsers() 
+        public IActionResult GetAllRegisteredUsers()
         {
-            try
-            {
-                return Ok(_userService.GetAllUsers());
-            }
-            catch (Exception)
-            {
-                return BadRequest("Something went wrong. Please contact customer support.");
-            }
+            return Ok(_userService.GetAllUsers());
         }
     }
 }

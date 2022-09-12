@@ -39,7 +39,7 @@ namespace NotesApp.Services.Implementations
 
             if (user == null)
             {
-                throw new UserException(null, null, "This user does not exists in the database!");
+                throw new UserNotFoundException(null, null, "This user does not exists in the database!");
             }
 
             string token = handler.GenerateSecurityToken(user);
@@ -62,32 +62,32 @@ namespace NotesApp.Services.Implementations
 
             if (string.IsNullOrEmpty(model.FirstName)) 
             {
-                throw new UserException(null, model.Username, "First name is required!");
+                throw new UserValidationException(null, model.Username, "First name is required!");
             }
 
             if (string.IsNullOrEmpty(model.LastName))
             {
-                throw new UserException(null, model.Username, "Last name is required!");
+                throw new UserValidationException(null, model.Username, "Last name is required!");
             }
 
             if (string.IsNullOrEmpty(model.Username))
             {
-                throw new UserException(null, model.Username, "Usernamew is required!");
+                throw new UserValidationException(null, model.Username, "Usernamew is required!");
             }
 
             if (ValidateUsername(model.Username))
             {
-                throw new UserException(null, model.Username, "Username alreay exsits!");
+                throw new UserValidationException(null, model.Username, "Username alreay exsits!");
             }
 
             if (!ValidatePassword(model.Password)) 
             {
-                throw new UserException(null, model.Username, "Password is too weak!");
+                throw new UserValidationException(null, model.Username, "Password is too weak!");
             }
 
             if (model.Password != model.ConfirmPassword) 
             {
-                throw new UserException(null, model.Username, "Password did not match!");
+                throw new UserValidationException(null, model.Username, "Password did not match!");
             }
 
             var hashedPassword = hasher.HashGenerator(model.Password);

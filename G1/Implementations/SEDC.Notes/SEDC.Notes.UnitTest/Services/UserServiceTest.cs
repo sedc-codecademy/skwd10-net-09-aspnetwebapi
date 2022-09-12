@@ -76,6 +76,22 @@ namespace SEDC.Notes.UnitTest.Services
             Assert.ThrowsException<UserException>(() => service.Register(model));
         }
 
+        [TestMethod, TestCategory("Register")]
+        public void Register_DifferentPasswordFromConfirm_ThrowsUserException()
+        {
+            // Arrange
+            RegisterModel model = new RegisterModel
+            {
+                FirstName = "Petko",
+                LastName = "Petkovski",
+                Username = "Petko petkovski",
+                Password = "petko123",
+                ConfirmPassword = "petko1234"
+            };
+            // Act & Assert
+            Assert.ThrowsException<UserException>(() => service.Register(model));
+        }
+
         // password != confirmPassword ke vrli isklucok
     }
 }

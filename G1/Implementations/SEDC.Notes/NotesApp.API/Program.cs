@@ -5,10 +5,13 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using NotesApp.API.Middleware;
 using NotesApp.Configurations;
+using NotesApp.Exceptions;
 using NotesApp.Utilities;
 using Serilog;
 using System;
+using System.Diagnostics;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.File("Logs/logs.txt"));
 
-builder.Services.AddControllers().AddJsonOptions(options => 
+builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
     options.JsonSerializerOptions.MaxDepth = 64;
@@ -76,6 +79,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("CorsPolicy");
+
+
+
+app.UseGlobalExceptonHandler()
+    .UseLoggingAndPerformanceTracking();
+
 
 app.UseHttpsRedirection();
 
