@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using SEDC.WebApi.Workshop.Notes.Common.Exceptions;
 using SEDC.WebApi.Workshop.Notes.Common.Models;
 using SEDC.WebApi.Workshop.Notes.DataAccess;
 using SEDC.WebApi.Workshop.Notes.DataModels.Models;
@@ -56,10 +57,11 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
             // Act
             // Assert
 
-            Assert.ThrowsException<Exception>(() =>
+            Assert.ThrowsException<UserException>(() =>
             {
                 service.Register(request);
             });
+            // TODO: add mote asserts
         }
 
         [TestMethod]
@@ -90,10 +92,11 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
 
             // Act
             // Assert
-            Assert.ThrowsException<Exception>(() =>
+            Assert.ThrowsException<UserException>(() =>
             {
                 service.Register(request);
             });
+            // TODO: add mote asserts
         }
 
         [TestMethod]
@@ -178,10 +181,11 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
 
             // Act
             // Assert
-            Assert.ThrowsException<Exception>(() =>
+            Assert.ThrowsException<UserException>(() =>
             {
                 service.Login(request);
             });
+            // TODO: add more assertions
         }
 
         [TestMethod]
@@ -217,10 +221,11 @@ namespace SEDC.WebApi.Workshop.Notes.Tests
 
             // Act
             // Assert
-            Assert.ThrowsException<Exception>(() =>
+            Assert.ThrowsException<UserException>(() =>
             {
                 service.Login(request);
             });
+            // TODO: add more assertions
         }
 
         [TestMethod]

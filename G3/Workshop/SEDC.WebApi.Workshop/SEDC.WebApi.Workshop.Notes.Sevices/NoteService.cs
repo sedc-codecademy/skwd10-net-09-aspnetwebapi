@@ -1,4 +1,5 @@
-﻿using SEDC.WebApi.Workshop.Notes.Common.MappingHelpers;
+﻿using SEDC.WebApi.Workshop.Notes.Common.Exceptions;
+using SEDC.WebApi.Workshop.Notes.Common.MappingHelpers;
 using SEDC.WebApi.Workshop.Notes.DataAccess;
 using SEDC.WebApi.Workshop.Notes.DataModels.Models;
 using SEDC.WebApi.Workshop.Notes.ServiceModels.NotesModels;
@@ -24,7 +25,7 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             
             if(user == null)
             {
-                throw new Exception("User not found");
+                throw new UserException(userId, null, "User not found");
             }
 
             var newwNote = new Note
@@ -50,7 +51,7 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
 
             if(note == null)
             {
-                throw new Exception("Note not found");
+                throw new NoteException(id, userId, "Note not found");
             }
 
             _noteRepository.Delete(note);
@@ -63,7 +64,9 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
                 .FirstOrDefault();
 
             if (note == null)
-                throw new Exception("Note not found");
+            {
+                throw new NoteException(id, userId, "Note not found");
+            }
 
             return note.Map();
         }

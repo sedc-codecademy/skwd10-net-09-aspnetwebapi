@@ -13,6 +13,7 @@ using System.Security.Claims;
 using SEDC.WebApi.Workshop.Notes.Common.Helpers;
 using System.Diagnostics;
 using Serilog;
+using SEDC.WebApi.Workshop.Notes.Common.Exceptions;
 
 namespace SEDC.WebApi.Workshop.Notes.Sevices
 {
@@ -42,18 +43,22 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw new Exception("Error connecting to Database");
+                throw new UserException(null, request.FirstName, ex.Message);
             }
 
 
             if(user != null)
             {
-                throw new Exception("Username already exists");
+                throw new UserException(user.Id, 
+                    $"{user.FirstName} {user.LastName}",
+                    "User already exists");
             }
 
             if (!IsValidPassword(request.Password))
             {
-                throw new Exception("Password is not valid");
+                throw new UserException(null, 
+                    request.Username, 
+                    "Password is not valid");
             }
 
             var newUser = new User
@@ -72,7 +77,9 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw new Exception("Error connecting to Database");
+                throw new UserException(null, 
+                    request.Username,
+                    "Error connecting to Database");
             }
             Log.Information($"User created with username {request.Username}");
         }
@@ -88,14 +95,17 @@ namespace SEDC.WebApi.Workshop.Notes.Sevices
 
             if(user == null)
             {
-                throw new Exception("User with that username does not exists");
+                throw new UserException(null,null, 
+                    "User with that username does not exists");
             }
 
             var hashedPassword = HashPassword(request.Password);
             if(user.Password != hashedPassword)
             {
                 Log.Warning($"User {request.Username} tried to log in with wrong password");
-                throw new Exception("Password is not valid");
+                throw new UserException(user.Id, 
+                    user.Username, 
+                    "Password is not valid");
             }
             sw.Stop();
             Log.Debug($"User validation ended in {sw.ElapsedMilliseconds}");
