@@ -37,8 +37,6 @@ namespace Notes.Application.Services.Implementation
         {
             // LINQ 
             IEnumerable<UserModel> result = repository.GetAll()
-                .Where(x => x.ForgotPasswordCode != null)
-                .OrderBy(x => x.Username)
                 .ToList()
                 .Select(x => x.ToModel());
 

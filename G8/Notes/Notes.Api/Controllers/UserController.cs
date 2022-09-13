@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -76,7 +77,7 @@ namespace Notes.Api.Controllers
             };
             var principal = new ClaimsPrincipal(identities); // <-- userot
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-            return Ok();
+            return Ok(new ClaimsPrinicipalWrapper(principal));
             //Microsoft.AspNetCore.Identity.SignInResult? result = await signInManager.PasswordSignInAsync(model.UsernameOrEmail, model.Password, model.RememberMe, lockoutOnFailure: true);
             //if (result.Succeeded)
             //{
@@ -90,6 +91,13 @@ namespace Notes.Api.Controllers
         {
             var users = await userExternalService.GetExternalUsers(token);
             return Ok(users);
+        }
+
+
+        [HttpGet("claims")]
+        public async Task<ActionResult<ExternalUser>> Claims()
+        {
+            return Ok(new ClaimsPrinicipalWrapper(User));
         }
     }
 }

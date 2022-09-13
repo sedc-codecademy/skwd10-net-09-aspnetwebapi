@@ -9,7 +9,5 @@ namespace Notes.Application
         public int Id { get; }
 
         public bool IsInRole(string roles);
-
-
     }
 }

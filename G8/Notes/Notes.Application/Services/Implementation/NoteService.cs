@@ -77,7 +77,6 @@ namespace Notes.Application.Services.Implementation
 
         public IEnumerable<NoteModel> GetNotes()
         {
-            return repository.GetAll().Select(note => note.ToModel());
         }
     }
 }

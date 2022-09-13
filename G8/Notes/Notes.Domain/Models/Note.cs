@@ -20,7 +20,7 @@
 
         public string Color { get; set; } = string.Empty;
 
-        public ICollection<Tag> Tags { get; set; } 
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
 
         public User User { get; set; }
     }

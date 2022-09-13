@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var corsPolicy = "CorsPolicy";
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddServices();
@@ -33,6 +33,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             context.Response.StatusCode = StatusCodes.Status403Forbidden;
             return Task.CompletedTask;
         };
+        opts.Cookie.SameSite = SameSiteMode.None;
+        opts.Cookie.HttpOnly = true;
+        opts.Cookie.IsEssential = true;
     });
 builder.Services.AddAuthorization(opts =>
 {
@@ -51,7 +54,15 @@ builder.Services.AddHttpClient<IUserExternalService, UserExternalService>(client
 {
     client.BaseAddress = new Uri(builder.Configuration["ExternalServices:DataProviderApi"]);
 });
-builder.Services.AddHostedService<ImportUsersBackgroundWorker>();
+builder.Services.AddCors(setup =>
+{
+    setup.AddPolicy(corsPolicy, policyBuilder => policyBuilder
+        .WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials());
+});
+//builder.Services.AddHostedService<ImportUsersBackgroundWorker>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -59,7 +70,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(corsPolicy);
 app.UseGlobalExceptionHandler();
 app.Use(async (context, next) =>
 {

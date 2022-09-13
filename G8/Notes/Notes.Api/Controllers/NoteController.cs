@@ -54,20 +54,15 @@ namespace Notes.Api.Controllers
         }
         // var url = 'https://localhost:7323/api/v1/note/by-super-admin/create?userId=[0-9]+' 
         // ?userId=1&noteId=1&tag=asdads&color=asdasd
-        [HttpPost("by-super-admin")]// ?userId=[0-9]+
-        public ActionResult<NoteModel> CreateNote([FromBody] CreateNoteModel model, [FromQuery] int? userId)
+        [HttpPost]// ?userId=[0-9]+
+        public ActionResult<NoteModel> CreateNote([FromBody] CreateNoteModel model)
         {
-            if (userId == null)
-            {
-                return Unauthorized(); // 401
-            }
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState); // 400
             }
 
-            var noteModel = service.CreateNote(model, userId.Value);
+            var noteModel = service.CreateNote(model, new ClaimsPrinicipalWrapper(User).Id);
             return Created($"api/v1/note/{noteModel.Id}", noteModel); // 201
 
         }
