@@ -37,7 +37,7 @@ namespace SEDC.MoviesApp.DataAccess
                 new User()
                 {
                     Id = 1,
-                    FirstName = "Bob",
+                    FirstName = "Boby",
                     LastName = "Bobsky",
                     Username = "bob007",
                     Password = hashedPassword
