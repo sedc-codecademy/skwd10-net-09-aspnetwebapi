@@ -125,3 +125,169 @@ FROM [User] AS [u]
 2022-09-12 20:46:52.414 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 47487.8381ms
 2022-09-12 20:46:52.414 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
 2022-09-12 20:46:52.421 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 50 - 400 - text/plain;+charset=utf-8 59256.8097ms
+2022-09-15 19:16:16.057 +02:00 [INF] User profile is available. Using 'C:\Users\tstevkovski\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-15 19:16:16.330 +02:00 [INF] Now listening on: http://localhost:5277
+2022-09-15 19:16:16.331 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-15 19:16:16.331 +02:00 [INF] Hosting environment: Development
+2022-09-15 19:16:16.331 +02:00 [INF] Content root path: C:\Sedc\WebApi\skwd10-net-09-aspnetwebapi\G3\Workshop\SEDC.WebApi.Workshop\SEDC.WebApi.Workshop.Notes\
+2022-09-15 19:16:17.235 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/index.html - -
+2022-09-15 19:16:17.680 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_vs/browserLink - -
+2022-09-15 19:16:17.680 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - -
+2022-09-15 19:16:17.718 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - - - 200 12022 application/javascript;+charset=utf-8 13.5915ms
+2022-09-15 19:16:17.732 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/index.html - - - 200 - text/html;charset=utf-8 502.0683ms
+2022-09-15 19:16:17.783 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 102.5787ms
+2022-09-15 19:16:17.833 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - -
+2022-09-15 19:16:17.978 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 144.5983ms
+2022-09-15 19:16:28.717 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 52
+2022-09-15 19:16:29.139 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:16:29.164 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:16:30.272 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-15 19:16:31.256 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-15 19:16:31.381 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-15 19:16:31.385 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 2216.0546ms
+2022-09-15 19:16:31.385 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:16:31.391 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 52 - 400 - text/plain;+charset=utf-8 2674.7185ms
+2022-09-15 19:16:39.174 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 52
+2022-09-15 19:16:39.176 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:16:39.176 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:16:39.186 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-15 19:16:39.194 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-15 19:16:39.461 +02:00 [INF] Executing OkObjectResult, writing value of type 'SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto'.
+2022-09-15 19:16:39.466 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 289.4528ms
+2022-09-15 19:16:39.466 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:16:39.466 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/Users/login application/json 52 - 200 - application/json;+charset=utf-8 291.7002ms
+2022-09-15 19:29:00.381 +02:00 [INF] User profile is available. Using 'C:\Users\tstevkovski\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-15 19:29:00.561 +02:00 [INF] Now listening on: http://localhost:5277
+2022-09-15 19:29:00.563 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-15 19:29:00.563 +02:00 [INF] Hosting environment: Development
+2022-09-15 19:29:00.564 +02:00 [INF] Content root path: C:\Sedc\WebApi\skwd10-net-09-aspnetwebapi\G3\Workshop\SEDC.WebApi.Workshop\SEDC.WebApi.Workshop.Notes\
+2022-09-15 19:29:01.327 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/index.html - -
+2022-09-15 19:29:01.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_vs/browserLink - -
+2022-09-15 19:29:01.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - -
+2022-09-15 19:29:01.668 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/index.html - - - 200 - text/html;charset=utf-8 343.4929ms
+2022-09-15 19:29:01.668 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - - - 200 12022 application/javascript;+charset=utf-8 7.8704ms
+2022-09-15 19:29:01.701 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 43.9016ms
+2022-09-15 19:29:01.783 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - -
+2022-09-15 19:29:01.908 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 124.9701ms
+2022-09-15 19:32:54.446 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain;charset=UTF-8 43
+2022-09-15 19:32:54.824 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:32:54.839 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:32:55.105 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-09-15 19:32:55.110 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 268.244ms
+2022-09-15 19:32:55.112 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:32:55.114 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain;charset=UTF-8 43 - 415 - application/problem+json;+charset=utf-8 668.1969ms
+2022-09-15 19:35:22.217 +02:00 [INF] User profile is available. Using 'C:\Users\tstevkovski\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-15 19:35:22.414 +02:00 [INF] Now listening on: http://localhost:5277
+2022-09-15 19:35:22.416 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-15 19:35:22.416 +02:00 [INF] Hosting environment: Development
+2022-09-15 19:35:22.416 +02:00 [INF] Content root path: C:\Sedc\WebApi\skwd10-net-09-aspnetwebapi\G3\Workshop\SEDC.WebApi.Workshop\SEDC.WebApi.Workshop.Notes\
+2022-09-15 19:35:23.377 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/index.html - -
+2022-09-15 19:35:23.762 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - -
+2022-09-15 19:35:23.767 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/_vs/browserLink - -
+2022-09-15 19:35:23.779 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_framework/aspnetcore-browser-refresh.js - - - 200 12022 application/javascript;+charset=utf-8 7.7414ms
+2022-09-15 19:35:23.809 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/index.html - - - 200 - text/html;charset=utf-8 435.7547ms
+2022-09-15 19:35:23.833 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 66.3740ms
+2022-09-15 19:35:23.925 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - -
+2022-09-15 19:35:24.072 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 146.3647ms
+2022-09-15 19:35:35.121 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain;charset=UTF-8 43
+2022-09-15 19:35:35.128 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:35:35.257 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:35:35.276 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:35:35.464 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-09-15 19:35:35.472 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 191.816ms
+2022-09-15 19:35:35.474 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:35:35.476 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain;charset=UTF-8 43 - 415 - application/problem+json;+charset=utf-8 355.7719ms
+2022-09-15 19:36:17.124 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain;charset=UTF-8 43
+2022-09-15 19:36:17.127 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:36:17.153 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:36:17.157 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:36:17.168 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-09-15 19:36:17.168 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 11.3697ms
+2022-09-15 19:36:17.168 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:36:17.168 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain;charset=UTF-8 43 - 415 - application/problem+json;+charset=utf-8 45.8433ms
+2022-09-15 19:37:07.796 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain 43
+2022-09-15 19:37:07.802 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:37:07.807 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:37:07.807 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:37:07.808 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-09-15 19:37:07.808 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 1.6751ms
+2022-09-15 19:37:07.808 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:37:07.808 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login text/plain 43 - 415 - application/problem+json;+charset=utf-8 12.8306ms
+2022-09-15 19:37:52.282 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5277/api/v1/users/login - -
+2022-09-15 19:37:52.315 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:37:52.315 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5277/api/v1/users/login - - - 204 - - 33.2043ms
+2022-09-15 19:37:52.322 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login application/json 43
+2022-09-15 19:37:52.322 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:37:52.322 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:37:52.322 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:37:53.041 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-15 19:37:53.939 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-15 19:37:54.194 +02:00 [INF] Executing OkObjectResult, writing value of type 'SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto'.
+2022-09-15 19:37:54.196 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 1873.197ms
+2022-09-15 19:37:54.196 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:37:54.201 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login application/json 43 - 200 - application/json;+charset=utf-8 1879.3802ms
+2022-09-15 19:43:40.506 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5277/api/v1/users/login - -
+2022-09-15 19:43:40.507 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:43:40.508 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5277/api/v1/users/login - - - 204 - - 2.1756ms
+2022-09-15 19:43:40.520 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login application/json 43
+2022-09-15 19:43:40.520 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:43:40.521 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:43:40.521 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:43:40.551 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-15 19:43:40.562 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-15 19:43:40.563 +02:00 [INF] Executing OkObjectResult, writing value of type 'SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto'.
+2022-09-15 19:43:40.563 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 41.9857ms
+2022-09-15 19:43:40.563 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:43:40.563 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login application/json 43 - 200 - application/json;+charset=utf-8 43.9075ms
+2022-09-15 19:43:51.839 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5277/api/v1/notes/get-all - -
+2022-09-15 19:43:51.840 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:43:51.840 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5277/api/v1/notes/get-all - - - 204 - - 0.5117ms
+2022-09-15 19:43:51.841 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/api/v1/notes/get-all application/json -
+2022-09-15 19:43:51.842 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:43:51.845 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-09-15 19:43:51.851 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2022-09-15 19:43:51.851 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/api/v1/notes/get-all application/json - - 401 0 - 10.3748ms
+2022-09-15 19:44:03.443 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5277/api/v1/notes/get-all - -
+2022-09-15 19:44:03.443 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:44:03.443 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5277/api/v1/notes/get-all - - - 204 - - 0.2122ms
+2022-09-15 19:44:03.444 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/api/v1/notes/get-all application/json -
+2022-09-15 19:44:03.444 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:44:03.444 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-09-15 19:44:03.444 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2022-09-15 19:44:03.444 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/api/v1/notes/get-all application/json - - 401 0 - 0.4232ms
+2022-09-15 19:45:10.448 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5277/api/v1/users/login - -
+2022-09-15 19:45:10.448 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:45:10.448 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5277/api/v1/users/login - - - 204 - - 0.3891ms
+2022-09-15 19:45:10.469 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5277/api/v1/users/login application/json 43
+2022-09-15 19:45:10.470 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:45:10.470 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:45:10.471 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto] Login(SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.LoginModel) on controller SEDC.WebApi.Workshop.Notes.Controllers.UsersController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:45:10.514 +02:00 [INF] Entity Framework Core 6.0.8 initialized 'NotesDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: None
+2022-09-15 19:45:10.516 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[FirstName], [u].[LastName], [u].[Password], [u].[Username]
+FROM [User] AS [u]
+2022-09-15 19:45:10.516 +02:00 [INF] Executing OkObjectResult, writing value of type 'SEDC.WebApi.Workshop.Notes.ServiceModels.UserModels.UserLoginDto'.
+2022-09-15 19:45:10.516 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes) in 45.45ms
+2022-09-15 19:45:10.516 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.UsersController.Login (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:45:10.516 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5277/api/v1/users/login application/json 43 - 200 - application/json;+charset=utf-8 46.9361ms
+2022-09-15 19:45:15.890 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5277/api/v1/notes/get-all - -
+2022-09-15 19:45:15.890 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:45:15.891 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5277/api/v1/notes/get-all - - - 204 - - 0.2187ms
+2022-09-15 19:45:15.891 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5277/api/v1/notes/get-all application/json -
+2022-09-15 19:45:15.891 +02:00 [INF] CORS policy execution successful.
+2022-09-15 19:45:15.962 +02:00 [INF] Executing endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.NotesController.GetNotes (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:45:15.964 +02:00 [INF] Route matched with {action = "GetNotes", controller = "Notes"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[SEDC.WebApi.Workshop.Notes.ServiceModels.NotesModels.NoteDto]] GetNotes() on controller SEDC.WebApi.Workshop.Notes.Controllers.NotesController (SEDC.WebApi.Workshop.Notes).
+2022-09-15 19:45:16.242 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[SEDC.WebApi.Workshop.Notes.DataModels.Models.Note, SEDC.WebApi.Workshop.Notes.DataModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[SEDC.WebApi.Workshop.Notes.ServiceModels.NotesModels.NoteDto, SEDC.WebApi.Workshop.Notes.ServiceModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-09-15 19:45:16.244 +02:00 [INF] Executed action SEDC.WebApi.Workshop.Notes.Controllers.NotesController.GetNotes (SEDC.WebApi.Workshop.Notes) in 280.7307ms
+2022-09-15 19:45:16.244 +02:00 [INF] Executed endpoint 'SEDC.WebApi.Workshop.Notes.Controllers.NotesController.GetNotes (SEDC.WebApi.Workshop.Notes)'
+2022-09-15 19:45:16.244 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5277/api/v1/notes/get-all application/json - - 200 - application/json;+charset=utf-8 353.1577ms
