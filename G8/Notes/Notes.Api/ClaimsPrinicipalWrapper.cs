@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace Notes.Api
 {
-    public class ClaimsPrinicipalWrapper
+    public class ClaimsPrinicipalWrapper // facade pattern
         : IRolePrincipal
     {
         private readonly ClaimsPrincipal claimsPrincipal;

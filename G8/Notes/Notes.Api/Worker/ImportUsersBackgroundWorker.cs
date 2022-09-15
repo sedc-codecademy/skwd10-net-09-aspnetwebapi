@@ -2,7 +2,7 @@
 
 namespace Notes.Api.Worker
 {
-    public class ImportUsersBackgroundWorker
+    public class ImportUsersBackgroundWorker // +
         : BackgroundService
     {
         private readonly IServiceProvider serviceProvider;

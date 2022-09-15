@@ -11,6 +11,9 @@ using System.Security.Claims;
 var builder = WebApplication.CreateBuilder(args);
 var corsPolicy = "CorsPolicy";
 // Add services to the container.
+// Sto e Dependency injection
+// lifetime 
+
 builder.Services.AddControllers();
 builder.Services.AddServices();
 builder.Services.AddInfrastracture(builder.Configuration);
@@ -62,16 +65,24 @@ builder.Services.AddCors(setup =>
         .AllowAnyMethod()
         .AllowCredentials());
 });
+// asdadasdasd
+// next()
+//
 //builder.Services.AddHostedService<ImportUsersBackgroundWorker>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
+
+// sto e middelware
+// request pipeline
+//redosledot
+//
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(corsPolicy);
-app.UseGlobalExceptionHandler();
+app.UseCors(corsPolicy);// sho e cross origin request
+app.UseGlobalExceptionHandler(); // + 
 app.Use(async (context, next) =>
 {
     try

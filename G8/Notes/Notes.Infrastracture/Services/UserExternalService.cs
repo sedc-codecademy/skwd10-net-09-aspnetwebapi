@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Notes.Application.Models.External;
 using Notes.Application.Services;
-using System.Collections.Generic;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Notes.Infrastracture.Services
 {

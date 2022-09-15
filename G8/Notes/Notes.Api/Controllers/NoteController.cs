@@ -14,7 +14,7 @@ namespace Notes.Api.Controllers
     // put - za menuvanje na celiot model
     // patch - koga sakame da smenime direktva nekoe prop - retko se koristi
     // post za povikuvanje metodi 
-    [Authorize(Policy = SystemPolicies.MustHaveId)]
+    [Authorize(Policy = SystemPolicies.MustHaveId)] // + Authorize | Role based i policy
     [Route("api/v1/[controller]")]
     [ApiController]
     public class NoteController : ControllerBase
