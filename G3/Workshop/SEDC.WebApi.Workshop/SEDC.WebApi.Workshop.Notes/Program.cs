@@ -15,6 +15,17 @@ namespace SEDC.WebApi.Workshop.Notes
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", policy =>
+                {
+                    policy
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod();
+                });
+            });
+
             // Add services to the container.
             builder.Services.AddAuthorization();
 
@@ -98,6 +109,8 @@ namespace SEDC.WebApi.Workshop.Notes
             //    app.UseSwagger();
             //    app.UseSwaggerUI();
             //}
+
+            app.UseCors("MyPolicy");
 
             app.UseSwagger();
             app.UseSwaggerUI();
