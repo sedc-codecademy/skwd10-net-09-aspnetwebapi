@@ -49,11 +49,12 @@ namespace SEDC.MoviesApp.Controllers
             try
             {
                 _userService.Register(model);
-                return Ok("Successfully registered user!");
+               
+                return Ok(new ResponseDto() { success = "Successfully registered user!" });
             }
             catch (UserException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new ResponseDto() { error =  ex.Message});
             }
             catch (Exception ex)
             {

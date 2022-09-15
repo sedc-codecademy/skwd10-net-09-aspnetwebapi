@@ -40,7 +40,7 @@ namespace SEDC.MoviesApp.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred, contact the admin");
             }
         }
-
+        [Authorize]
         [HttpGet("filter")]
         public ActionResult<List<MovieDto>> Filter(int year, GenreEnum? genre)
         {
