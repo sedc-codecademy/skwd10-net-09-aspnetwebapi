@@ -16,7 +16,7 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {}
 
   deleteNote() {
-    this._noteService.deleteNotes(this.note.Id, localStorage.getItem("token") ?? "").subscribe({
+    this._noteService.deleteNotes(this.note.Id).subscribe({
       error: err => err.error,
       complete: () => {
         this.emitter.emit()

@@ -9,31 +9,30 @@ export class NoteService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getNotes(token: string) : Observable<any> {
+  getNotes() : Observable<any> {
     let url = `${environment.apiServerBaseUrl}api/note/getallbyuser`;
-    let headers = this.createHeaders(token)
+    //let headers = this.createHeaders(token)
 
-    return this._httpClient.get(url, { headers });
+    return this._httpClient.get(url);
   }
 
-  deleteNotes(id: number, token: string) {
+  deleteNotes(id: number) {
     let url = `${environment.apiServerBaseUrl}api/note/deletebyid/${id}`;
-    let headers = this.createHeaders(token)
+    //let headers = this.createHeaders(token)
 
-    return this._httpClient.delete(url, { headers })
+    return this._httpClient.delete(url)
   }
 
-  createNote(model: NoteModel, token: string) {
+  createNote(model: NoteModel) {
     let url = `${environment.apiServerBaseUrl}api/note/create`;
-    let headers = this.createHeaders(token)
+    //let headers = this.createHeaders(token)
 
-    return this._httpClient.post(url, model, { headers })
+    return this._httpClient.post(url, model)
   }
 
-
-  private createHeaders(token: string) : HttpHeaders {
-    return new HttpHeaders({
-      'Authorization' : `Bearer ${token}`
-    })
-  }
+  // private createHeaders(token: string) : HttpHeaders {
+  //   return new HttpHeaders({
+  //     'Authorization' : `Bearer ${token}`
+  //   })
+  // }
 }

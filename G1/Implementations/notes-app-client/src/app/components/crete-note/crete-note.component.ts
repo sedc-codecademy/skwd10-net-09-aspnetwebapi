@@ -39,7 +39,7 @@ export class CreteNoteComponent implements OnInit {
 
     let noteModel = new NoteModel(text, color, parseInt(tagType))
 
-    this._noteService.createNote(noteModel, this.token).subscribe({
+    this._noteService.createNote(noteModel).subscribe({
       error: err => console.warn(err.error),
       complete: () => {
         this._router.navigate(["/notes"])

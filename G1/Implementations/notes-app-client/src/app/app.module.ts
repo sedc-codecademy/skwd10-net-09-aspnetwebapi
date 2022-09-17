@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app.routing.modue';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +14,8 @@ import { GetNotesComponent } from './components/get-notes/get-notes.component';
 import { NoteService } from './services/note.service';
 import { NoteComponent } from './components/note/note.component';
 import { CreteNoteComponent } from './components/crete-note/crete-note.component';
+import { NoteTagPipe } from './pipes/note-tag.pipe';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CreteNoteComponent } from './components/crete-note/crete-note.component
     LoginComponent,
     GetNotesComponent,
     NoteComponent,
-    CreteNoteComponent
+    CreteNoteComponent,
+    NoteTagPipe
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,12 @@ import { CreteNoteComponent } from './components/crete-note/crete-note.component
   ],
   providers: [
     AuthService,
-    NoteService
+    NoteService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

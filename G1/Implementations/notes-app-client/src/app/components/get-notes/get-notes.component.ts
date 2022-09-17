@@ -29,7 +29,7 @@ export class GetNotesComponent implements OnInit {
 
 
   getNotes() {
-    this._noteService.getNotes(this.token).subscribe({
+    this._noteService.getNotes().subscribe({
       next: data => {
         console.log(data)
         this.notes = data
