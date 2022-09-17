@@ -58,7 +58,7 @@ namespace SEDC.Notes.UnitTest.Services
             // Arrange
             RegisterModel model = new RegisterModel();
             // Act & Assert
-            Assert.ThrowsException<UserException>(() => service.Register(model));
+            Assert.ThrowsException<UserValidationException>(() => service.Register(model));
         }
 
         [TestMethod, TestCategory("Register")]
@@ -73,7 +73,7 @@ namespace SEDC.Notes.UnitTest.Services
                 Password = "petko"
             };
             // Act & Assert
-            Assert.ThrowsException<UserException>(() => service.Register(model));
+            Assert.ThrowsException<UserValidationException>(() => service.Register(model));
         }
 
         [TestMethod, TestCategory("Register")]
@@ -89,7 +89,7 @@ namespace SEDC.Notes.UnitTest.Services
                 ConfirmPassword = "petko1234"
             };
             // Act & Assert
-            Assert.ThrowsException<UserException>(() => service.Register(model));
+            Assert.ThrowsException<UserValidationException>(() => service.Register(model));
         }
 
         // password != confirmPassword ke vrli isklucok
